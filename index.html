@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raspored sati 2026/27 - Elči Ibrahim-pašina medresa u Travniku</title>
     <style>
-        /* Modern, self-contained CSS - works 100% offline on Android/Desktop */
         :root {
-            --emerald-950: #022c22;
             --emerald-900: #064e3b;
             --emerald-800: #065f46;
             --emerald-700: #047857;
@@ -27,834 +25,119 @@
             --slate-200: #e2e8f0;
             --slate-100: #f1f5f9;
             --slate-50: #f8fafc;
-            --amber-950: #451a03;
             --amber-900: #78350f;
             --amber-800: #92400e;
             --amber-700: #b45309;
-            --amber-600: #d97706;
             --amber-500: #f59e0b;
-            --amber-400: #fbbf24;
             --amber-200: #fde68a;
             --amber-100: #fef3c7;
             --amber-50: #fffbeb;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--slate-50);
-            color: var(--slate-800);
-            line-height: 1.45;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--emerald-900) 0%, var(--emerald-800) 60%, #115e59 100%);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-            position: sticky;
-            top: 0;
-            z-index: 30;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-
-        .header-inner {
-            padding: 14px 16px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: var(--emerald-300);
-        }
-
-        .brand-sub {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--emerald-200);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .brand-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.01em;
-        }
-
-        .clock-pill {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.28);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 9px 14px;
-            border-radius: 16px;
-            flex-grow: 1;
-            max-width: 100%;
-        }
-
-        @media (min-width: 640px) {
-            .clock-pill {
-                flex-grow: 0;
-            }
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 9999px;
-            background-color: var(--emerald-400, #34d399);
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .status-dot.sim {
-            background-color: var(--amber-400);
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.85; }
-            70% { transform: scale(1.8); opacity: 0; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-
-        .status-dot.live::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 9999px;
-            background-color: #34d399;
-            animation: pulse-ring 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-        }
-
-        .clock-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .clock-time {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            font-weight: 700;
-            font-size: 15px;
-            color: #ffffff;
-        }
-
-        .day-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 6px;
-            background: rgba(16, 185, 129, 0.22);
-            color: var(--emerald-200);
-            border: 1px solid rgba(52, 211, 153, 0.35);
-        }
-
-        .period-text {
-            font-size: 12px;
-            color: rgba(236, 253, 245, 0.92);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
-        /* Main layout */
-        main {
-            padding-top: 20px;
-            padding-bottom: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        /* Card */
-        .card {
-            background: #ffffff;
-            border-radius: 18px;
-            border: 1px solid var(--slate-200);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-            padding: 16px;
-        }
-
-        /* Time Control Bar */
-        .control-bar {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        @media (min-width: 900px) {
-            .control-bar {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .control-info {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .control-icon {
-            padding: 8px;
-            border-radius: 12px;
-            background: var(--amber-50);
-            color: var(--amber-600);
-            border: 1px solid var(--amber-200);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .control-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--slate-800);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .mode-badge {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 9999px;
-            background: var(--emerald-100);
-            color: var(--emerald-800);
-        }
-
-        .mode-badge.sim {
-            background: var(--amber-100);
-            color: var(--amber-800);
-        }
-
-        .control-desc {
-            font-size: 12px;
-            color: var(--slate-500);
-            margin-top: 2px;
-        }
-
-        .control-inputs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-
-        select, input[type="text"] {
-            background-color: var(--slate-50);
-            border: 1px solid var(--slate-300);
-            color: var(--slate-800);
-            font-size: 13px;
-            border-radius: 12px;
-            padding: 9px 12px;
-            font-weight: 600;
-            outline: none;
-            transition: border-color 0.15s, box-shadow 0.15s;
-        }
-
-        select:focus, input[type="text"]:focus {
-            border-color: var(--emerald-600);
-            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
-            background-color: #ffffff;
-        }
-
-        select:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn-reset {
-            font-size: 12px;
-            font-weight: 700;
-            padding: 9px 12px;
-            border-radius: 12px;
-            background: var(--slate-100);
-            border: 1px solid var(--slate-300);
-            color: var(--slate-700);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-reset:hover {
-            background: var(--slate-200);
-        }
-
-        /* Tabs & Search */
-        .nav-row {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .nav-row {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .tabs {
-            display: flex;
-            padding: 4px;
-            background: var(--slate-200);
-            border-radius: 14px;
-            gap: 4px;
-            width: 100%;
-        }
-
-        @media (min-width: 640px) {
-            .tabs {
-                width: auto;
-            }
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 9px 12px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            border: none;
-            background: transparent;
-            color: var(--slate-600);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.15s;
-            white-space: nowrap;
-        }
-
-        .tab-btn.active {
-            background: #ffffff;
-            color: var(--emerald-900);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            font-weight: 700;
-        }
-
-        .count-pill {
-            padding: 1px 7px;
-            font-size: 11px;
-            border-radius: 9999px;
-            background: var(--emerald-100);
-            color: var(--emerald-800);
-            font-weight: 800;
-        }
-
-        .search-wrap {
-            position: relative;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .search-wrap {
-                width: 320px;
-            }
-        }
-
-        .search-wrap svg {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--slate-400);
-            pointer-events: none;
-        }
-
-        .search-wrap input {
-            width: 100%;
-            padding-left: 38px;
-            background: #ffffff;
-            font-weight: 500;
-        }
-
-        /* Professors Grid */
-        .prof-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-
-        @media (min-width: 640px) {
-            .prof-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .prof-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .prof-card {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid var(--slate-200);
-            padding: 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-            cursor: pointer;
-            transition: transform 0.12s, box-shadow 0.15s, border-color 0.15s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-
-        .prof-card:hover {
-            border-color: var(--emerald-500);
-            box-shadow: 0 6px 16px rgba(6, 78, 59, 0.08);
-            transform: translateY(-1px);
-        }
-
-        .prof-card.in-class {
-            border-color: #6ee7b7;
-            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25);
-        }
-
-        .prof-card-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .prof-ident {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: var(--slate-100);
-            color: var(--slate-700);
-            font-weight: 800;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .prof-card.in-class .avatar {
-            background: var(--emerald-700);
-            color: #ffffff;
-        }
-
-        .prof-name {
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--slate-900);
-        }
-
-        .prof-subj {
-            font-size: 12px;
-            color: var(--slate-500);
-            margin-top: 2px;
-        }
-
-        .raz-tag {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 8px;
-            background: var(--amber-50);
-            color: var(--amber-800);
-            border: 1px solid var(--amber-200);
-            flex-shrink: 0;
-        }
-
-        .prof-footer-active {
-            margin: 12px -15px -15px -15px;
-            padding: 10px 15px;
-            background: var(--emerald-50);
-            border-top: 1px solid var(--emerald-100);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        .active-class-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--emerald-800);
-        }
-
-        .pulse-dot-sm {
-            width: 8px;
-            height: 8px;
-            border-radius: 9999px;
-            background: var(--emerald-500);
-        }
-
-        .subj-pill {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--emerald-800);
-            background: #ffffff;
-            padding: 2px 8px;
-            border-radius: 6px;
-            border: 1px solid var(--emerald-200);
-        }
-
-        .prof-footer-idle {
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px solid var(--slate-100);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--slate-500);
-        }
-
-        .link-arrow {
-            color: var(--emerald-700);
-            font-weight: 700;
-        }
-
-        /* Live Overview Grid */
-        .live-item {
-            cursor: pointer;
-            border-radius: 14px;
-            border: 1px solid var(--slate-200);
-            background: var(--slate-50);
-            padding: 13px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            transition: border-color 0.15s, background 0.15s;
-        }
-
-        .live-item:hover {
-            border-color: var(--emerald-500);
-            background: var(--emerald-50);
-        }
-
-        .class-badge-lg {
-            padding: 6px 12px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 13px;
-            background: var(--emerald-700);
-            color: #ffffff;
-            flex-shrink: 0;
-        }
-
-        .elective-badge {
-            background-color: var(--slate-200) !important;
-            color: var(--slate-800) !important;
-            border: 1px solid var(--slate-400) !important;
-            font-weight: 800;
-        }
-
-        /* Tables */
-        .table-wrap {
-            overflow-x: auto;
-            border-radius: 14px;
-            border: 1px solid var(--slate-200);
-            background: #ffffff;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        th {
-            background: var(--slate-100);
-            color: var(--slate-700);
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 11px 10px;
-            border-bottom: 1px solid var(--slate-200);
-        }
-
-        th.sticky-col, td.sticky-col {
-            position: sticky;
-            left: 0;
-            z-index: 5;
-            background: var(--slate-50);
-            text-align: left;
-            border-right: 1px solid var(--slate-200);
-            white-space: nowrap;
-        }
-
-        th.sticky-col {
-            background: var(--slate-100);
-        }
-
-        th.today-col {
-            background: var(--emerald-100);
-            color: var(--emerald-950);
-        }
-
-        td {
-            padding: 8px;
-            border-bottom: 1px solid var(--slate-200);
-            min-width: 105px;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .cell-box {
-            border-radius: 10px;
-            padding: 7px 8px;
-            background: var(--emerald-50);
-            color: var(--emerald-950);
-            border: 1px solid var(--emerald-200);
-        }
-
-        .cell-box.current {
-            background: var(--emerald-700);
-            color: #ffffff;
-            border-color: var(--emerald-800);
-            box-shadow: 0 2px 6px rgba(4, 120, 87, 0.35);
-        }
-
-        .cell-box-title {
-            font-weight: 800;
-            font-size: 13px;
-        }
-
-        .cell-box-sub {
-            font-size: 10px;
-            opacity: 0.85;
-            margin-top: 2px;
-        }
-
-        /* Modal */
-        .modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.65);
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            overflow-y: auto;
-        }
-
-        .modal-panel {
-            background: #ffffff;
-            border-radius: 22px;
-            width: 100%;
-            max-width: 900px;
-            max-height: 92vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-            border: 1px solid var(--slate-200);
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, var(--emerald-900), #115e59);
-            color: #ffffff;
-            padding: 18px 20px;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
-            position: sticky;
-            top: 0;
-            z-index: 20;
-        }
-
-        .modal-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.16);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 800;
-            flex-shrink: 0;
-        }
-
-        .btn-close {
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            color: #ffffff;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .btn-close:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .modal-body {
-            padding: 18px 20px 24px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .status-banner {
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid var(--slate-200);
-            background: var(--slate-50);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        @media (min-width: 640px) {
-            .status-banner {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .status-banner.active {
-            background: var(--emerald-50);
-            border-color: #6ee7b7;
-            color: var(--emerald-950);
-        }
-
-        .status-banner.break {
-            background: var(--amber-50);
-            border-color: var(--amber-200);
-            color: var(--amber-950);
-        }
-
-        .status-banner-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--slate-200);
-            color: var(--slate-700);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .status-banner.active .status-banner-icon {
-            background: var(--emerald-600);
-            color: #ffffff;
-        }
-
-        .status-banner.break .status-banner-icon {
-            background: var(--amber-500);
-            color: #ffffff;
-        }
-
-        .next-box {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 12px;
-            padding: 10px 12px;
-            font-size: 12px;
-        }
-
-        footer {
-            border-top: 1px solid var(--slate-200);
-            padding: 20px 16px 32px 16px;
-            font-size: 12px;
-            color: var(--slate-500);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: center;
-        }
-
-        @media (min-width: 640px) {
-            footer {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                text-align: left;
-            }
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--slate-50); color: var(--slate-800); line-height: 1.45; }
+        .hidden { display: none !important; }
+        header { background: linear-gradient(135deg, var(--emerald-900) 0%, var(--emerald-800) 60%, #115e59 100%); color: #ffffff; position: sticky; top: 0; z-index: 30; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+        .header-inner { padding: 14px 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); display: flex; align-items: center; justify-content: center; color: var(--emerald-300); }
+        .brand-sub { font-size: 11px; font-weight: 600; color: var(--emerald-200); text-transform: uppercase; }
+        .brand-title { font-size: 18px; font-weight: 800; color: #ffffff; }
+        .clock-pill { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.12); padding: 9px 14px; border-radius: 16px; }
+        .status-dot { width: 10px; height: 10px; border-radius: 9999px; background-color: var(--emerald-400, #34d399); position: relative; }
+        .status-dot.sim { background-color: var(--amber-400); }
+        .clock-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .clock-time { font-family: monospace; font-weight: 700; font-size: 15px; color: #ffffff; }
+        .day-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: rgba(16,185,129,0.22); color: var(--emerald-200); border: 1px solid rgba(52,211,153,0.35); }
+        .period-text { font-size: 12px; color: rgba(236,253,245,0.92); font-weight: 500; margin-top: 2px; }
+        main { padding-top: 20px; padding-bottom: 32px; display: flex; flex-direction: column; gap: 18px; }
+        .card { background: #ffffff; border-radius: 18px; border: 1px solid var(--slate-200); box-shadow: 0 1px 3px rgba(0,0,0,0.04); padding: 16px; }
+        .control-bar { display: flex; flex-direction: column; gap: 14px; }
+        @media(min-width: 900px) { .control-bar { flex-direction: row; align-items: center; justify-content: space-between; } }
+        .control-info { display: flex; align-items: flex-start; gap: 12px; }
+        .control-icon { padding: 8px; border-radius: 12px; background: var(--amber-50); color: var(--amber-600); border: 1px solid var(--amber-200); display: flex; }
+        .control-title { font-size: 14px; font-weight: 700; color: var(--slate-800); display: flex; align-items: center; gap: 8px; }
+        .mode-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; background: var(--emerald-100); color: var(--emerald-800); }
+        .mode-badge.sim { background: var(--amber-100); color: var(--amber-800); }
+        .control-desc { font-size: 12px; color: var(--slate-500); margin-top: 2px; }
+        .control-inputs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        select { background-color: var(--slate-50); border: 1px solid var(--slate-300); color: var(--slate-800); font-size: 13px; border-radius: 12px; padding: 9px 12px; font-weight: 600; outline: none; }
+        select:focus { border-color: var(--emerald-600); box-shadow: 0 0 0 3px rgba(5,150,105,0.15); background: #fff; }
+        .btn-reset { font-size: 12px; font-weight: 700; padding: 9px 12px; border-radius: 12px; background: var(--slate-100); border: 1px solid var(--slate-300); color: var(--slate-700); cursor: pointer; }
+        .nav-row { display: flex; flex-direction: column; gap: 12px; }
+        @media(min-width: 768px) { .nav-row { flex-direction: row; align-items: center; justify-content: space-between; } }
+        .tabs { display: flex; padding: 4px; background: var(--slate-200); border-radius: 14px; gap: 4px; width: 100%; }
+        @media(min-width: 640px) { .tabs { width: auto; } }
+        .tab-btn { flex: 1; padding: 9px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; border: none; background: transparent; color: var(--slate-600); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+        .tab-btn.active { background: #ffffff; color: var(--emerald-900); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 700; }
+        .count-pill { padding: 1px 7px; font-size: 11px; border-radius: 9999px; background: var(--emerald-100); color: var(--emerald-800); font-weight: 800; }
+        .search-wrap { position: relative; width: 100%; }
+        @media(min-width: 768px) { .search-wrap { width: 320px; } }
+        .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--slate-400); }
+        .search-wrap input { width: 100%; padding: 9px 12px 9px 38px; background: #fff; border: 1px solid var(--slate-300); border-radius: 12px; font-size: 13px; font-weight: 500; outline: none; }
+        .prof-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        @media(min-width: 640px) { .prof-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(min-width: 1024px) { .prof-grid { grid-template-columns: repeat(3, 1fr); } }
+        .prof-card { background: #ffffff; border-radius: 16px; border: 1px solid var(--slate-200); padding: 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); cursor: pointer; transition: transform 0.12s, box-shadow 0.15s, border-color 0.15s; display: flex; flex-direction: column; justify-content: space-between; }
+        .prof-card:hover { border-color: var(--emerald-500); box-shadow: 0 6px 16px rgba(6,78,59,0.08); transform: translateY(-1px); }
+        .prof-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+        .prof-ident { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 12px; background: var(--slate-100); color: var(--slate-700); font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .prof-card.in-class .avatar { background: var(--emerald-700); color: #ffffff; }
+        .prof-name { font-weight: 700; font-size: 15px; color: var(--slate-900); }
+        .prof-subj { font-size: 12px; color: var(--slate-500); margin-top: 2px; }
+        .raz-tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 8px; background: var(--amber-50); color: var(--amber-800); border: 1px solid var(--amber-200); }
+        .prof-footer-active { margin: 12px -15px -15px -15px; padding: 10px 15px; background: var(--emerald-50); border-top: 1px solid var(--emerald-100); display: flex; align-items: center; justify-content: space-between; }
+        .active-class-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: var(--emerald-800); }
+        .pulse-dot-sm { width: 8px; height: 8px; border-radius: 9999px; background: var(--emerald-500); }
+        .subj-pill { font-size: 11px; font-weight: 700; color: var(--emerald-800); background: #ffffff; padding: 2px 8px; border-radius: 6px; border: 1px solid var(--emerald-200); }
+        .prof-footer-idle { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--slate-100); display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--slate-500); }
+        .link-arrow { color: var(--emerald-700); font-weight: 700; }
+        .live-item { cursor: pointer; border-radius: 14px; border: 1px solid var(--slate-200); background: var(--slate-50); padding: 13px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .live-item:hover { border-color: var(--emerald-500); background: var(--emerald-50); }
+        .class-badge-lg { padding: 6px 12px; border-radius: 10px; font-weight: 800; font-size: 13px; background: var(--emerald-700); color: #ffffff; }
+        .elective-badge { background-color: var(--amber-100) !important; color: var(--amber-900) !important; border: 1px solid var(--amber-300) !important; font-weight: 800; }
+        .table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--slate-200); background: #ffffff; }
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; }
+        th { background: var(--slate-100); color: var(--slate-700); font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 11px 10px; border-bottom: 1px solid var(--slate-200); }
+        th.sticky-col, td.sticky-col { position: sticky; left: 0; z-index: 5; background: var(--slate-50); text-align: left; border-right: 1px solid var(--slate-200); white-space: nowrap; }
+        th.sticky-col { background: var(--slate-100); }
+        th.today-col { background: var(--emerald-100); color: var(--emerald-950); }
+        td { padding: 8px; border-bottom: 1px solid var(--slate-200); min-width: 105px; }
+        .cell-box { border-radius: 10px; padding: 7px 8px; background: var(--emerald-50); color: var(--emerald-950); border: 1px solid var(--emerald-200); text-align: left; }
+        .cell-box.current { background: var(--emerald-700); color: #ffffff; border-color: var(--emerald-800); }
+        .cell-box-title { font-weight: 800; font-size: 13px; }
+        .cell-box-sub { font-size: 10px; opacity: 0.85; margin-top: 2px; }
+        .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.65); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 12px; overflow-y: auto; }
+        .modal-panel { background: #ffffff; border-radius: 22px; width: 100%; max-width: 900px; max-height: 92vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+        .modal-header { background: linear-gradient(135deg, var(--emerald-900), #115e59); color: #ffffff; padding: 18px 20px; display: flex; align-items: flex-start; justify-content: space-between; position: sticky; top: 0; z-index: 20; }
+        .modal-avatar { width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,0.16); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; }
+        .btn-close { background: rgba(255,255,255,0.15); border: none; color: #ffffff; width: 36px; height: 36px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal-body { padding: 18px 20px 24px 20px; display: flex; flex-direction: column; gap: 18px; }
+        .status-banner { border-radius: 16px; padding: 16px; border: 1px solid var(--slate-200); background: var(--slate-50); display: flex; flex-direction: column; gap: 12px; }
+        @media(min-width: 640px) { .status-banner { flex-direction: row; align-items: center; justify-content: space-between; } }
+        .status-banner.active { background: var(--emerald-50); border-color: #6ee7b7; color: var(--emerald-950); }
+        .status-banner.break { background: var(--amber-50); border-color: var(--amber-200); color: var(--amber-950); }
+        .status-banner-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--slate-200); color: var(--slate-700); display: flex; align-items: center; justify-content: center; }
+        .status-banner.active .status-banner-icon { background: var(--emerald-600); color: #fff; }
+        .status-banner.break .status-banner-icon { background: var(--amber-500); color: #fff; }
+        .next-box { background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 10px 12px; font-size: 12px; }
+        footer { border-top: 1px solid var(--slate-200); padding: 20px 16px 32px; font-size: 12px; color: var(--slate-500); display: flex; flex-direction: column; gap: 8px; text-align: center; }
+        @media(min-width: 640px) { footer { flex-direction: row; justify-content: space-between; text-align: left; } }
     </style>
 </head>
 <body>
-
-    <!-- Top Header -->
     <header>
         <div class="container header-inner">
             <div class="brand">
                 <div class="brand-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </div>
                 <div>
                     <div class="brand-sub">Elči Ibrahim-pašina medresa u Travniku</div>
                     <div class="brand-title">Raspored sati 2026/27.</div>
                 </div>
             </div>
-
             <div class="clock-pill">
                 <span id="liveIndicator" class="status-dot live"></span>
                 <div>
@@ -868,26 +151,20 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container">
-
-        <!-- Simulation / Time Control Bar -->
         <section class="card control-bar">
             <div class="control-info">
                 <div class="control-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <div>
                     <div class="control-title">
                         Vremenski režim
                         <span id="modeBadge" class="mode-badge">Uživo (Automatski)</span>
                     </div>
-                    <div class="control-desc">Automatski prati stvarno vrijeme ili ručno odaberi dan i čas za brzu provjeru.</div>
+                    <div class="control-desc">Automatski prati stvarno vrijeme ili ručno odaberi dan i čas.</div>
                 </div>
             </div>
-
             <div class="control-inputs">
                 <select id="simDay">
                     <option value="AUTO">Automatski (Stvarno vrijeme)</option>
@@ -897,15 +174,14 @@
                     <option value="ČETVRTAK">Četvrtak</option>
                     <option value="PETAK">Petak</option>
                 </select>
-
                 <select id="simPeriod" disabled>
-                    <option value="1">1. čas (08:00 - 08:45)</option>
-                    <option value="2">2. čas (08:50 - 09:35)</option>
-                    <option value="3">3. čas (09:40 - 10:25)</option>
-                    <option value="ODMOR">Veliki odmor (10:25 - 10:45)</option>
-                    <option value="4">4. čas (10:45 - 11:30)</option>
-                    <option value="5">5. čas (11:35 - 12:20)</option>
-                    <option value="6">6. čas (12:25 - 13:10)</option>
+                    <option value="1">1. čas (07:30 - 08:15)</option>
+                    <option value="2">2. čas (08:20 - 09:05)</option>
+                    <option value="3">3. čas (09:10 - 09:55)</option>
+                    <option value="ODMOR">Veliki odmor (09:55 - 10:15)</option>
+                    <option value="4">4. čas (10:15 - 11:00)</option>
+                    <option value="5">5. čas (11:05 - 11:50)</option>
+                    <option value="6">6. čas (11:55 - 12:40)</option>
                     <option value="7">7. čas - Popodne / Odj. zajednica</option>
                     <option value="8">8. čas - Popodne (TIZO)</option>
                     <option value="9">9. čas - Popodne (TIZO)</option>
@@ -913,72 +189,53 @@
                     <option value="11">11. čas - Popodne (TIZO)</option>
                     <option value="12">12. čas - Popodne (TIZO)</option>
                 </select>
-
-                <button id="resetLiveBtn" class="btn-reset hidden" type="button">
-                    ↺ Vrati uživo
-                </button>
+                <button id="resetLiveBtn" class="btn-reset hidden" type="button">↺ Vrati uživo</button>
             </div>
         </section>
 
-        <!-- Navigation Tabs & Search -->
         <div class="nav-row">
             <div class="tabs">
-                <button id="tabProfessors" class="tab-btn active" type="button" onclick="switchTab('professors')">
-                    Profesori (39)
-                </button>
-                <button id="tabLive" class="tab-btn" type="button" onclick="switchTab('live')">
-                    Ko je sad na času?
-                    <span id="activeCountBadge" class="count-pill">0</span>
-                </button>
-                <button id="tabClasses" class="tab-btn" type="button" onclick="switchTab('classes')">
-                    Odjeljenja
-                </button>
+                <button id="tabProfessors" class="tab-btn active" type="button" onclick="switchTab('professors')">Profesori (39)</button>
+                <button id="tabLive" class="tab-btn" type="button" onclick="switchTab('live')">Ko je sad na času? <span id="activeCountBadge" class="count-pill">0</span></button>
+                <button id="tabClasses" class="tab-btn" type="button" onclick="switchTab('classes')">Odjeljenja</button>
             </div>
-
             <div id="searchContainer" class="search-wrap">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <input type="text" id="searchInput" placeholder="Pretraži profesora, predmet ili razred...">
             </div>
         </div>
 
-        <!-- VIEW 1: PROFESSORS DIRECTORY -->
         <section id="viewProfessors">
             <div id="professorsGrid" class="prof-grid"></div>
         </section>
 
-        <!-- VIEW 2: LIVE OVERVIEW -->
         <section id="viewLive" class="hidden">
             <div class="card">
                 <div style="padding-bottom: 12px; border-bottom: 1px solid var(--slate-100); margin-bottom: 14px;">
-                    <h3 id="liveSectionTitle" style="font-size: 16px; font-weight: 800; color: var(--slate-900);">Aktivna nastava</h3>
-                    <p id="liveSectionSubtitle" style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">Pregled svih profesora koji trenutno drže čas.</p>
+                    <h3 id="liveSectionTitle" style="font-size: 16px; font-weight: 800;">Aktivna nastava</h3>
+                    <p id="liveSectionSubtitle" style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">Pregled profesora.</p>
                 </div>
                 <div id="liveClassesGrid" class="prof-grid"></div>
             </div>
         </section>
 
-        <!-- VIEW 3: CLASS TIMETABLE VIEWER -->
         <section id="viewClasses" class="hidden">
             <div class="card" style="display: flex; flex-direction: column; gap: 14px;">
                 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
                     <div>
-                        <h3 style="font-size: 16px; font-weight: 800; color: var(--slate-900);">Raspored po odjeljenjima</h3>
-                        <p style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">Odaberi odjeljenje za pregled sedmičnog rasporeda i predavača.</p>
+                        <h3 style="font-size: 16px; font-weight: 800;">Raspored po odjeljenjima</h3>
+                        <p style="font-size: 12px; color: var(--slate-500); margin-top: 2px;">Odaberi odjeljenje.</p>
                     </div>
                     <select id="classSelector" style="background: var(--emerald-50); border-color: var(--emerald-200); color: var(--emerald-950); font-weight: 800;"></select>
                 </div>
                 <div id="classTimetableContainer"></div>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="container">
         <div>
-            <strong style="color: var(--slate-700);">Elči Ibrahim-pašina medresa u Travniku • Školska 2026/27. godina</strong>
+            <strong>Elči Ibrahim-pašina medresa u Travniku • Školska 2026/27. godina</strong>
             <div>Verzija rasporeda 1.0 (07.09.2026.) • Direktor: dr. Kemal Avdagić</div>
         </div>
         <div>
@@ -986,52 +243,36 @@
         </div>
     </footer>
 
-    <!-- PROFESSOR DETAIL MODAL -->
     <div id="professorModal" class="modal-backdrop hidden" onclick="if(event.target === this) closeModal()">
         <div class="modal-panel">
             <div class="modal-header">
                 <div style="display: flex; align-items: center; gap: 14px;">
                     <div id="modalAvatar" class="modal-avatar">BF</div>
                     <div>
-                        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+                        <div style="display: flex; gap: 6px; align-items: center;">
                             <span id="modalNumber" style="font-size: 11px; font-family: monospace; background: rgba(0,0,0,0.28); padding: 2px 7px; border-radius: 6px; color: var(--emerald-200);">#1</span>
                             <span id="modalRazrednik" class="hidden" style="font-size: 11px; font-weight: 700; background: rgba(251,191,36,0.2); color: #fde68a; border: 1px solid rgba(253,230,138,0.35); padding: 2px 8px; border-radius: 9999px;">Razrednik</span>
                         </div>
-                        <h3 id="modalProfName" style="font-size: 20px; font-weight: 800; margin-top: 3px;">Ime Profesora</h3>
+                        <h3 id="modalProfName" style="font-size: 20px; font-weight: 800; margin-top: 3px;">Ime</h3>
                         <p id="modalSubjects" style="font-size: 12px; color: var(--emerald-100); margin-top: 2px;">Predmet</p>
                     </div>
                 </div>
-                <button class="btn-close" type="button" onclick="closeModal()" aria-label="Zatvori">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
+                <button class="btn-close" type="button" onclick="closeModal()">✕</button>
             </div>
-
             <div class="modal-body">
-                <!-- Live Status Banner -->
                 <div id="modalLiveBanner" class="status-banner">
                     <div style="display: flex; align-items: flex-start; gap: 12px;">
-                        <div class="status-banner-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
+                        <div class="status-banner-icon">⏱</div>
                         <div>
-                            <div id="modalStatusLabel" style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75;">TRENUTNO STANJE</div>
+                            <div id="modalStatusLabel" style="font-size: 11px; font-weight: 800; text-transform: uppercase; opacity: 0.75;">TRENUTNO STANJE</div>
                             <div id="modalStatusHeadline" style="font-size: 16px; font-weight: 800; margin-top: 2px;">Provjera...</div>
                             <div id="modalStatusSubtext" style="font-size: 12px; opacity: 0.9; margin-top: 2px;"></div>
                         </div>
                     </div>
                     <div id="modalNextClassBox" class="next-box"></div>
                 </div>
-
-                <!-- Weekly Schedule Table -->
                 <div>
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                        <h4 style="font-size: 14px; font-weight: 800; color: var(--slate-800);">Sedmični raspored časova</h4>
-                        <span style="font-size: 11px; color: var(--slate-500);">Prevuci tabelu lijevo-desno</span>
-                    </div>
+                    <h4 style="font-size: 14px; font-weight: 800; margin-bottom: 8px;">Sedmični raspored časova</h4>
                     <div class="table-wrap">
                         <table>
                             <thead>
@@ -1048,9 +289,7 @@
                         </table>
                     </div>
                 </div>
-
-                <!-- Extra Notes -->
-                <div id="modalExtraNotes" class="hidden" style="border-radius: 12px; background: var(--amber-50); border: 1px solid var(--amber-200); padding: 12px 14px; font-size: 12px; color: var(--amber-950);">
+                <div id="modalExtraNotes" class="hidden" style="border-radius: 12px; background: var(--amber-50); border: 1px solid var(--amber-200); padding: 12px; font-size: 12px; color: var(--amber-900);">
                     <div id="modalExtraNotesText"></div>
                 </div>
             </div>
@@ -1058,684 +297,80 @@
     </div>
 
     <script>
-        // =========================================================================
-        // 1. COMPLETE TIMETABLE DATA (ELČI IBRAHIM-PAŠINA MEDRESA 2026/27)
-        // =========================================================================
         const DAYS = ["PONEDJELJAK", "UTORAK", "SRIJEDA", "ČETVRTAK", "PETAK"];
-
         const PERIOD_TIMES = {
-            1: { label: "1. čas", start: "08:00", end: "08:45", startMin: 8 * 60, endMin: 8 * 60 + 45 },
-            2: { label: "2. čas", start: "08:50", end: "09:35", startMin: 8 * 60 + 50, endMin: 9 * 60 + 35 },
-            3: { label: "3. čas", start: "09:40", end: "10:25", startMin: 9 * 60 + 40, endMin: 10 * 60 + 25 },
-            4: { label: "4. čas", start: "10:45", end: "11:30", startMin: 10 * 60 + 45, endMin: 11 * 60 + 30 },
-            5: { label: "5. čas", start: "11:35", end: "12:20", startMin: 11 * 60 + 35, endMin: 12 * 60 + 20 },
-            6: { label: "6. čas", start: "12:25", end: "13:10", startMin: 12 * 60 + 25, endMin: 13 * 60 + 10 },
-            7: { label: "7. čas", start: "13:30", end: "14:15", startMin: 13 * 60 + 30, endMin: 14 * 60 + 15 },
-            8: { label: "8. čas", start: "14:20", end: "15:05", startMin: 14 * 60 + 20, endMin: 15 * 60 + 5 },
-            9: { label: "9. čas", start: "15:10", end: "15:55", startMin: 15 * 60 + 10, endMin: 15 * 60 + 55 },
-            10: { label: "10. čas", start: "16:00", end: "16:45", startMin: 16 * 60, endMin: 16 * 60 + 45 },
-            11: { label: "11. čas", start: "16:50", end: "17:35", startMin: 16 * 60 + 50, endMin: 17 * 60 + 35 },
-            12: { label: "12. čas", start: "17:40", end: "18:25", startMin: 17 * 60 + 40, endMin: 18 * 60 + 25 }
+            1: { label: "1. čas", start: "07:30", end: "08:15", startMin: 7 * 60 + 30, endMin: 8 * 60 + 15 },
+            2: { label: "2. čas", start: "08:20", end: "09:05", startMin: 8 * 60 + 20, endMin: 9 * 60 + 5 },
+            3: { label: "3. čas", start: "09:10", end: "09:55", startMin: 9 * 60 + 10, endMin: 9 * 60 + 55 },
+            4: { label: "4. čas", start: "10:15", end: "11:00", startMin: 10 * 60 + 15, endMin: 11 * 60 },
+            5: { label: "5. čas", start: "11:05", end: "11:50", startMin: 11 * 60 + 5, endMin: 11 * 60 + 50 },
+            6: { label: "6. čas", start: "11:55", end: "12:40", startMin: 11 * 60 + 55, endMin: 12 * 60 + 40 },
+            7: { label: "7. čas", start: "13:00", end: "13:45", startMin: 13 * 60, endMin: 13 * 60 + 45 },
+            8: { label: "8. čas", start: "13:50", end: "14:35", startMin: 13 * 60 + 50, endMin: 14 * 60 + 35 },
+            9: { label: "9. čas", start: "14:40", end: "15:25", startMin: 14 * 60 + 40, endMin: 15 * 60 + 25 },
+            10: { label: "10. čas", start: "15:30", end: "16:15", startMin: 15 * 60 + 30, endMin: 16 * 60 + 15 },
+            11: { label: "11. čas", start: "16:20", end: "17:05", startMin: 16 * 60 + 20, endMin: 17 * 60 + 5 },
+            12: { label: "12. čas", start: "17:10", end: "17:55", startMin: 17 * 60 + 10, endMin: 17 * 60 + 55 }
         };
 
         const AFTERNOON_TIZO = {
             male: {
-                PONEDJELJAK: {},
                 UTORAK: { 7: "3-A", 8: "3-A", 9: "3-B", 10: "3-B", 11: "2-A", 12: "2-A" },
                 SRIJEDA: { 7: "1-A", 8: "1-A", 9: "1-B", 10: "1-B" },
-                ČETVRTAK: { 7: "2-B", 8: "2-B", 9: "4-A", 10: "4-A", 11: "4-B", 12: "4-B" },
-                PETAK: {}
+                ČETVRTAK: { 7: "2-B", 8: "2-B", 9: "4-A", 10: "4-A", 11: "4-B", 12: "4-B" }
             },
             female: {
                 PONEDJELJAK: { 7: "4-C", 8: "4-C", 9: "4-D", 10: "4-D", 11: "4-E", 12: "4-E" },
                 UTORAK: { 7: "3-C", 8: "3-C", 9: "3-D", 10: "3-D", 11: "3-E", 12: "3-E" },
                 SRIJEDA: { 7: "1-C", 8: "1-C", 9: "1-D", 10: "1-D", 11: "1-E", 12: "1-E" },
-                ČETVRTAK: { 7: "2-C", 8: "2-C", 9: "2-D", 10: "2-D", 11: "2-E", 12: "2-E" },
-                PETAK: {}
+                ČETVRTAK: { 7: "2-C", 8: "2-C", 9: "2-D", 10: "2-D", 11: "2-E", 12: "2-E" }
             }
         };
 
         const PROFESSORS = [
-            {
-                id: 1, name: "Bektaš Fadil", razrednik: null,
-                subjects: [{ name: "Kiraet", fond: 21 }],
-                rows: [{
-                    subject: "Kiraet", fond: 21,
-                    schedule: {
-                        PONEDJELJAK: ["4-E", "2-A", "4-C", "", "4-B", "3-B"],
-                        UTORAK: ["3-A", "2-A", "4-D", "", "3-C", "3-E"],
-                        SRIJEDA: ["3-C", "4-A", "3-B", "", "4-C", "4-B"],
-                        ČETVRTAK: ["3-E", "4-D", "2-A", "", "4-A", "3-A"],
-                        PETAK: ["4-E", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 2, name: "Čakić Nermina", razrednik: "2-C",
-                subjects: [{ name: "Kiraet", fond: 21 }],
-                rows: [{
-                    subject: "Kiraet", fond: 21,
-                    schedule: {
-                        PONEDJELJAK: ["", "1-C", "", "2-E", "2-D", "1-E"],
-                        UTORAK: ["1-E", "", "1-A", "1-D", "2-E", "1-C"],
-                        SRIJEDA: ["2-C", "", "1-C", "2-D", "1-A", "1-E"],
-                        ČETVRTAK: ["1-D", "2-C", "", "", "", ""],
-                        PETAK: ["2-D", "1-A", "1-D", "", "2-C", "2-E"]
-                    }
-                }]
-            },
-            {
-                id: 3, name: "Haseljić Fahrudin", razrednik: "1-B",
-                subjects: [{ name: "Kiraet", fond: 12 }, { name: "Tefsir", fond: 10 }],
-                rows: [
-                    {
-                        subject: "Kiraet", fond: 12,
-                        schedule: {
-                            PONEDJELJAK: ["", "1-B", "2-B", "", "3*", ""],
-                            UTORAK: ["", "", "", "2-B", "", ""],
-                            SRIJEDA: ["", "", "", "4*", "1-B", "3-D"],
-                            ČETVRTAK: ["4*", "", "3*", "", "", ""],
-                            PETAK: ["3-D", "", "2-B", "1-B", "", ""]
-                        }
-                    },
-                    {
-                        subject: "Tefsir", fond: 10,
-                        schedule: {
-                            PONEDJELJAK: ["", "", "", "", "", "3-D"],
-                            UTORAK: ["", "", "", "", "", "3-C"],
-                            SRIJEDA: ["", "", "", "3-E", "", ""],
-                            ČETVRTAK: ["", "3-A", "", "3-B", "3-E", "3-C"],
-                            PETAK: ["", "3-A", "", "", "3-B", "3-D"]
-                        }
-                    }
-                ]
-            },
-            {
-                id: 4, name: "Durgut Safet", razrednik: null,
-                subjects: [{ name: "Akaid", fond: 2 }],
-                rows: [{
-                    subject: "Akaid", fond: 2,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "", ""],
-                        UTORAK: ["4-B", "4-C", "", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 5, name: "Hodžić Asim", razrednik: "4-A",
-                subjects: [{ name: "Akaid", fond: 21 }],
-                rows: [{
-                    subject: "Akaid", fond: 21,
-                    schedule: {
-                        PONEDJELJAK: ["2-A", "2-D", "", "", "", ""],
-                        UTORAK: ["2-D", "", "2-C", "1-E", "3-D", "2-A"],
-                        SRIJEDA: ["3-B", "2-B", "", "2-E", "4-A", "3-E"],
-                        ČETVRTAK: ["2-C", "3-C", "1-E", "", "3-D", "3-E"],
-                        PETAK: ["", "3-C", "3-B", "2-B", "2-E", ""]
-                    }
-                }]
-            },
-            {
-                id: 6, name: "Bešo-Haskić Lejla", razrednik: "3-A",
-                subjects: [{ name: "Akaid", fond: 4 }, { name: "Fikh", fond: 18 }],
-                rows: [
-                    {
-                        subject: "Akaid", fond: 4,
-                        schedule: {
-                            PONEDJELJAK: ["", "", "", "", "", ""],
-                            UTORAK: ["1-A", "", "", "", "", ""],
-                            SRIJEDA: ["", "", "", "", "3-A", ""],
-                            ČETVRTAK: ["", "", "", "", "3-A", ""],
-                            PETAK: ["", "", "", "", "1-A", ""]
-                        }
-                    },
-                    {
-                        subject: "Fikh", fond: 18,
-                        schedule: {
-                            PONEDJELJAK: ["1-E", "", "3*", "1-C", "1-D", "4*"],
-                            UTORAK: ["", "1-C", "1-D", "4-C", "", ""],
-                            SRIJEDA: ["4*", "4-E", "", "4-A", "", "2-E"],
-                            ČETVRTAK: ["", "4-B", "", "", "2-E", "1-B"],
-                            PETAK: ["", "", "1-E", "3*", "", "1-B"]
-                        }
-                    }
-                ]
-            },
-            {
-                id: 7, name: "Indžić Hamid", razrednik: null,
-                subjects: [{ name: "Fikh", fond: 21 }],
-                rows: [{
-                    subject: "Fikh", fond: 21,
-                    schedule: {
-                        PONEDJELJAK: ["3-D", "2-B", "2-C", "1-A", "", "3-C"],
-                        UTORAK: ["2-B", "3-C", "3-B", "2-D", "3-E", "3-A"],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["3-A", "3-B", "2-C", "", "2-A", "1-A"],
-                        PETAK: ["4-D", "3-E", "2-D", "2-A", "3-D", ""]
-                    }
-                }]
-            },
-            {
-                id: 8, name: "Omerdić Ahmed", razrednik: null,
-                subjects: [{ name: "Ahlak", fond: 20 }, { name: "Akaid", fond: 1 }],
-                rows: [
-                    {
-                        subject: "Ahlak", fond: 20,
-                        schedule: {
-                            PONEDJELJAK: ["2-B", "3-C", "", "3-D", "4-A", "3-E"],
-                            UTORAK: ["", "", "3-A", "3-B", "1-D", "2-C"],
-                            SRIJEDA: ["2-E", "", "1-E", "1-B", "1-C", "2-D"],
-                            ČETVRTAK: ["", "", "", "4-E", "4-D", "2-A"],
-                            PETAK: ["1-A", "", "", "4-B", "4-C", ""]
-                        }
-                    },
-                    {
-                        subject: "Akaid", fond: 1,
-                        schedule: {
-                            PONEDJELJAK: ["", "", "", "", "", ""],
-                            UTORAK: ["", "", "", "", "", ""],
-                            SRIJEDA: ["", "", "", "", "", ""],
-                            ČETVRTAK: ["", "", "", "", "", ""],
-                            PETAK: ["", "4-D", "", "", "", ""]
-                        }
-                    }
-                ]
-            },
-            {
-                id: 9, name: "Adilović Ahmed", razrednik: null,
-                subjects: [{ name: "Tefsir", fond: 5 }],
-                rows: [{
-                    subject: "Tefsir", fond: 5,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "", ""],
-                        UTORAK: ["4-A", "4-B", "4-C", "", "4-D", "4-E"],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 10, name: "Indžić Salih", razrednik: "1-A",
-                subjects: [{ name: "Hadis", fond: 15 }, { name: "Akaid", fond: 6 }],
-                rows: [
-                    {
-                        subject: "Hadis", fond: 15,
-                        schedule: {
-                            PONEDJELJAK: ["", "", "", "3-E", "", ""],
-                            UTORAK: ["3-D", "", "", "3-C", "3-A", "3-B"],
-                            SRIJEDA: ["", "", "3-A", "4-E", "3-C", ""],
-                            ČETVRTAK: ["", "", "", "3-E", "", "3-D"],
-                            PETAK: ["3-B", "4-A", "4-B", "4-C", "4-D", ""]
-                        }
-                    },
-                    {
-                        subject: "Akaid", fond: 6,
-                        schedule: {
-                            PONEDJELJAK: ["1-C", "", "1-B", "", "", ""],
-                            UTORAK: ["", "1-B", "", "", "", ""],
-                            SRIJEDA: ["", "1-C", "", "", "", "1-D"],
-                            ČETVRTAK: ["", "", "", "", "1-D", ""],
-                            PETAK: ["", "", "", "", "", ""]
-                        }
-                    }
-                ]
-            },
-            {
-                id: 11, name: "Dautović Muharem", razrednik: null,
-                subjects: [{ name: "Akaid", fond: 1 }, { name: "Povijest islama", fond: 20 }],
-                rows: [
-                    {
-                        subject: "Akaid", fond: 1,
-                        schedule: {
-                            PONEDJELJAK: ["", "4-E", "", "", "", ""],
-                            UTORAK: ["", "", "", "", "", ""],
-                            SRIJEDA: ["", "", "", "", "", ""],
-                            ČETVRTAK: ["", "", "", "", "", ""],
-                            PETAK: ["", "", "", "", "", ""]
-                        }
-                    },
-                    {
-                        subject: "Povijest islama", fond: 20,
-                        schedule: {
-                            PONEDJELJAK: ["1-B", "", "2-A", "2-C", "", ""],
-                            UTORAK: ["1-D", "1-E", "2-B", "1-A", "1-C", "2-D"],
-                            SRIJEDA: ["1-E", "2-D", "2-E", "1-A", "", ""],
-                            ČETVRTAK: ["2-B", "1-B", "1-D", "1-C", "", ""],
-                            PETAK: ["2-A", "2-E", "2-C", "", "", ""]
-                        }
-                    }
-                ]
-            },
-            {
-                id: 12, name: "Sušić Nermin", razrednik: null,
-                subjects: [{ name: "Bosanski jezik i književnost", fond: 18 }],
-                rows: [{
-                    subject: "Bosanski jezik i književnost", fond: 18,
-                    schedule: {
-                        PONEDJELJAK: ["4-C", "4-D", "4-E", "", "", ""],
-                        UTORAK: ["4-D", "3-D", "4-E", "", "4-A", "4-B"],
-                        SRIJEDA: ["3-D", "4-C", "", "4-B", "", ""],
-                        ČETVRTAK: ["3-D", "4-C", "4-D", "4-A", "", ""],
-                        PETAK: ["4-B", "4-E", "4-A", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 13, name: "Đurek Đenana", razrednik: "3-B",
-                subjects: [{ name: "Bosanski jezik i književnost", fond: 18 }],
-                rows: [{
-                    subject: "Bosanski jezik i književnost", fond: 18,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "2-D", "", "2-C"],
-                        UTORAK: ["", "2-B", "2-A", "", "3-B", "2-E"],
-                        SRIJEDA: ["", "2-A", "2-C", "", "2-B", "3-B"],
-                        ČETVRTAK: ["", "", "", "2-E", "2-D", "3-B"],
-                        PETAK: ["", "2-B", "2-E", "2-C", "2-A", "2-D"]
-                    }
-                }]
-            },
-            {
-                id: 14, name: "Beganović Selma", razrednik: null,
-                subjects: [{ name: "Bosanski jezik i književnost", fond: 18 }],
-                rows: [{
-                    subject: "Bosanski jezik i književnost", fond: 18,
-                    schedule: {
-                        PONEDJELJAK: ["", "1-A", "", "1-B", "1-E", "1-D"],
-                        UTORAK: ["1-C", "1-D", "3-E", "", "", ""],
-                        SRIJEDA: ["1-C", "3-E", "1-D", "1-E", "", "1-A"],
-                        ČETVRTAK: ["1-E", "1-C", "1-B", "", "", ""],
-                        PETAK: ["", "", "", "1-A", "1-B", "3-E"]
-                    }
-                }]
-            },
-            {
-                id: 15, name: "Hodžić-Ašlipahić Bahrija", razrednik: null,
-                subjects: [{ name: "Bosanski jezik i književnost", fond: 6 }],
-                rows: [{
-                    subject: "Bosanski jezik i književnost", fond: 6,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "3-C", "", "3-A"],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["3-A", "3-C", "", "", "", ""],
-                        ČETVRTAK: ["", "", "", "3-C", "3-A", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 16, name: "Porča Lejla", razrednik: "3-C",
-                subjects: [{ name: "Arapski jezik", fond: 24 }],
-                rows: [{
-                    subject: "Arapski jezik", fond: 24,
-                    schedule: {
-                        PONEDJELJAK: ["3-C", "", "2-E", "4-D", "2-C", ""],
-                        UTORAK: ["2-C", "3-E", "2-E", "4-E", "", "4-D"],
-                        SRIJEDA: ["3-E", "2-C", "2-D", "", "4-D", "4-C"],
-                        ČETVRTAK: ["3-C", "2-E", "4-C", "2-D", "4-E", ""],
-                        PETAK: ["3-E", "2-D", "4-C", "4-E", "3-C", ""]
-                    }
-                }]
-            },
-            {
-                id: 17, name: "Šošić Dževdet", razrednik: null,
-                subjects: [{ name: "Arapski jezik", fond: 3 }],
-                rows: [{
-                    subject: "Arapski jezik", fond: 3,
-                    schedule: {
-                        PONEDJELJAK: ["", "3-D", "", "", "", ""],
-                        UTORAK: ["", "", "3-D", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "3-D", "", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 18, name: "Lendo Rešad", razrednik: null,
-                subjects: [{ name: "Arapski jezik", fond: 15 }],
-                rows: [{
-                    subject: "Arapski jezik", fond: 15,
-                    schedule: {
-                        PONEDJELJAK: ["1-D", "1-E", "1-A", "", "", ""],
-                        UTORAK: ["1-B", "1-A", "1-E", "1-C", "", ""],
-                        SRIJEDA: ["1-B", "1-D", "", "", "", ""],
-                        ČETVRTAK: ["1-B", "1-D", "1-C", "", "", ""],
-                        PETAK: ["1-C", "1-E", "1-A", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 19, name: "Makić Amina", razrednik: null,
-                subjects: [{ name: "Arapski jezik", fond: 18 }],
-                rows: [{
-                    subject: "Arapski jezik", fond: 18,
-                    schedule: {
-                        PONEDJELJAK: ["4-B", "3-B", "", "3-A", "2-B", "2-A"],
-                        UTORAK: ["", "3-A", "", "4-A", "4-B", ""],
-                        SRIJEDA: ["", "", "2-B", "3-B", "2-A", ""],
-                        ČETVRTAK: ["2-A", "", "4-A", "2-B", "4-B", ""],
-                        PETAK: ["", "", "", "4-A", "3-A", "3-B"]
-                    }
-                }]
-            },
-            {
-                id: 20, name: "Avdagić Kemal", razrednik: null,
-                subjects: [{ name: "Engleski jezik", fond: 4 }],
-                rows: [{
-                    subject: "Engleski jezik", fond: 4,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "", ""],
-                        UTORAK: ["", "4-A", "4-B", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "4-A", "4-B", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 21, name: "Đulabić Aida", razrednik: "1-D",
-                subjects: [{ name: "Engleski jezik", fond: 19 }],
-                rows: [{
-                    subject: "Engleski jezik", fond: 19,
-                    schedule: {
-                        PONEDJELJAK: ["1-A", "", "1-E", "", "", ""],
-                        UTORAK: ["", "", "", "", "1-B", "1-E"],
-                        SRIJEDA: ["1-D", "1-A", "", "1-C", "3-D", "3-C"],
-                        ČETVRTAK: ["1-C", "1-E", "", "1-B", "1-A", "1-D"],
-                        PETAK: ["1-B", "1-D", "3-D", "", "1-C", "3-C"]
-                    }
-                }]
-            },
-            {
-                id: 22, name: "Omerašević Jasmina", razrednik: "4-E",
-                subjects: [{ name: "Engleski jezik", fond: 18 }],
-                rows: [{
-                    subject: "Engleski jezik", fond: 18,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "2-A", "4-ET"],
-                        UTORAK: ["", "", "", "2-C", "2-D", ""],
-                        SRIJEDA: ["", "", "4-ET", "2-C", "2-E", "2-A"],
-                        ČETVRTAK: ["2-D", "", "2-E", "4-D", "2-C", "4-E"],
-                        PETAK: ["2-E", "", "4-D", "2-D", "4-E", "2-A"]
-                    }
-                }]
-            },
-            {
-                id: 23, name: "Perenda Šejla", razrednik: null,
-                subjects: [{ name: "Engleski jezik", fond: 15 }],
-                rows: [{
-                    subject: "Engleski jezik", fond: 15,
-                    schedule: {
-                        PONEDJELJAK: ["", "3-A", "3*", "", "", ""],
-                        UTORAK: ["", "", "", "3-E", "", "2-B"],
-                        SRIJEDA: ["4-TE", "", "3-E", "4-C", "3-B", ""],
-                        ČETVRTAK: ["4-TE", "2-B", "", "4-C", "3-B", ""],
-                        PETAK: ["", "", "", "3*", "2-B", "3-A"]
-                    }
-                }]
-            },
-            {
-                id: 24, name: "Dervić Azemina", razrednik: null,
-                subjects: [{ name: "Turski jezik", fond: 6 }],
-                rows: [{
-                    subject: "Turski jezik", fond: 6,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "3*", "4-ET"],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["4-TE", "", "4-ET", "", "", ""],
-                        ČETVRTAK: ["4-TE", "", "3*", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 25, name: "Tarakčija Ifeta", razrednik: null,
-                subjects: [{ name: "Historija", fond: 24 }],
-                rows: [{
-                    subject: "Historija", fond: 24,
-                    schedule: {
-                        PONEDJELJAK: ["2-C", "", "1-C", "2-A", "3*", "4*"],
-                        UTORAK: ["2-E", "", "2-D", "2-A", "1-A", "1-B"],
-                        SRIJEDA: ["", "2-E", "4*", "", "1-E", "2-C"],
-                        ČETVRTAK: ["1-A", "", "3*", "1-D", "1-E", "2-B"],
-                        PETAK: ["1-D", "", "1-B", "1-C", "2-D", "2-B"]
-                    }
-                }]
-            },
-            {
-                id: 26, name: "Zahirović Armin", razrednik: null,
-                subjects: [{ name: "Geografija", fond: 14 }],
-                rows: [{
-                    subject: "Geografija", fond: 14,
-                    schedule: {
-                        PONEDJELJAK: ["3-A", "3-E", "3*", "3-B", "", ""],
-                        UTORAK: ["3-C", "3-B", "", "", "", ""],
-                        SRIJEDA: ["4*", "3-D", "", "", "", ""],
-                        ČETVRTAK: ["4*", "3-E", "", "", "", ""],
-                        PETAK: ["3-A", "3-D", "3-C", "3*", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 27, name: "Jašarević Armin", razrednik: null,
-                subjects: [{ name: "Filozofija", fond: 10 }, { name: "Logika", fond: 5 }],
-                rows: [
-                    {
-                        subject: "Filozofija", fond: 10,
-                        schedule: {
-                            PONEDJELJAK: ["4-D", "", "4-B", "4-A", "4-C", ""],
-                            UTORAK: ["4-E", "", "4-A", "", "4-C", ""],
-                            SRIJEDA: ["", "4-B", "", "", "4-E", "4-D"],
-                            ČETVRTAK: ["", "", "", "", "", ""],
-                            PETAK: ["", "", "", "", "", ""]
-                        }
-                    },
-                    {
-                        subject: "Logika", fond: 5,
-                        schedule: {
-                            PONEDJELJAK: ["", "4-A", "", "", "", ""],
-                            UTORAK: ["", "4-E", "", "4-B", "", "4-C"],
-                            SRIJEDA: ["", "", "", "4-D", "", ""],
-                            ČETVRTAK: ["", "", "", "", "", ""],
-                            PETAK: ["", "", "", "", "", ""]
-                        }
-                    }
-                ]
-            },
-            {
-                id: 28, name: "Nuhić Ćorhusić Emina", razrednik: null,
-                subjects: [{ name: "Sociologija", fond: 10 }],
-                rows: [{
-                    subject: "Sociologija", fond: 10,
-                    schedule: {
-                        PONEDJELJAK: ["", "4-B", "4-A", "4-E", "4-D", ""],
-                        UTORAK: ["4-C", "4-D", "", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "4-E", "", "4-B", "4-C", "4-A"],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 29, name: "Tekešić Polić Aldina", razrednik: null,
-                subjects: [{ name: "Psihologija", fond: 7 }],
-                rows: [{
-                    subject: "Psihologija", fond: 7,
-                    schedule: {
-                        PONEDJELJAK: ["3-B", "", "3*", "", "", ""],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["", "3-A", "3-C", "3-D", "", ""],
-                        ČETVRTAK: ["", "", "", "", "", ""],
-                        PETAK: ["", "", "", "3*", "3-E", ""]
-                    }
-                }]
-            },
-            {
-                id: 30, name: "Muratović Nejra", razrednik: "3-D",
-                subjects: [{ name: "Pedagogija", fond: 2 }],
-                rows: [{
-                    subject: "Pedagogija", fond: 2,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "3*", ""],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "3*", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 31, name: "Kesten Ermin", razrednik: null,
-                subjects: [{ name: "Demokratija", fond: 10 }],
-                rows: [{
-                    subject: "Demokratija", fond: 10,
-                    schedule: {
-                        PONEDJELJAK: ["4-A", "4-C", "4-D", "4-B", "4-E", ""],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "", "", "", ""],
-                        PETAK: ["4-C", "4-B", "4-E", "4-D", "4-A", ""]
-                    }
-                }]
-            },
-            {
-                id: 32, name: "Karadža Admira", razrednik: "1-C",
-                subjects: [{ name: "Matematika", fond: 22 }],
-                rows: [{
-                    subject: "Matematika", fond: 22,
-                    schedule: {
-                        PONEDJELJAK: ["", "1-D", "", "4-C", "1-A", "1-C"],
-                        UTORAK: ["", "", "1-B", "4-D", "4-E", "3-D"],
-                        SRIJEDA: ["", "4-D", "3-D", "3-C", "3-E", "1-B"],
-                        ČETVRTAK: ["", "", "4-E", "1-E", "3-C", "1-C"],
-                        PETAK: ["", "4-C", "3-E", "1-D", "1-E", "1-A"]
-                    }
-                }]
-            },
-            {
-                id: 33, name: "Jašarević Enver", razrednik: "4-B",
-                subjects: [{ name: "Matematika", fond: 22 }],
-                rows: [{
-                    subject: "Matematika", fond: 22,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "3*", "", "2-E", "4*"],
-                        UTORAK: ["3-B", "2-D", "", "3-A", "2-A", "4-A"],
-                        SRIJEDA: ["2-B", "", "4*", "2-A", "4-B", "3-A"],
-                        ČETVRTAK: ["", "2-D", "", "2-C", "2-B", "2-E"],
-                        PETAK: ["4-A", "3-B", "", "3*", "4-B", "2-C"]
-                    }
-                }]
-            },
-            {
-                id: 34, name: "Smajić Aldijana", razrednik: null,
-                subjects: [{ name: "Fizika", fond: 20 }],
-                rows: [{
-                    subject: "Fizika", fond: 20,
-                    schedule: {
-                        PONEDJELJAK: ["2-D", "2-E", "", "1-D", "1-B", "2-B"],
-                        UTORAK: ["2-A", "2-C", "", "1-B", "2-B", "1-A"],
-                        SRIJEDA: ["2-A", "1-E", "", "1-D", "2-C", "1-C"],
-                        ČETVRTAK: ["2-E", "1-A", "2-D", "", "", ""],
-                        PETAK: ["1-E", "1-C", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 35, name: "Begović Merima", razrednik: "4-C",
-                subjects: [{ name: "Hemija", fond: 20 }],
-                rows: [{
-                    subject: "Hemija", fond: 20,
-                    schedule: {
-                        PONEDJELJAK: ["2-E", "", "1-D", "1-E", "1-C", "2-D"],
-                        UTORAK: ["", "", "", "2-E", "2-C", "1-D"],
-                        SRIJEDA: ["1-A", "", "1-B", "2-B", "2-D", ""],
-                        ČETVRTAK: ["", "", "1-A", "2-A", "1-B", "2-C"],
-                        PETAK: ["2-B", "2-A", "1-C", "1-E", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 36, name: "Kadrić Enisa", razrednik: null,
-                subjects: [{ name: "Biologija", fond: 20 }],
-                rows: [{
-                    subject: "Biologija", fond: 20,
-                    schedule: {
-                        PONEDJELJAK: ["3-E", "2-C", "2-D", "2-B", "", ""],
-                        UTORAK: ["3-E", "2-E", "3-C", "3-D", "", ""],
-                        SRIJEDA: ["2-D", "3-B", "2-A", "3-A", "", ""],
-                        ČETVRTAK: ["3-B", "2-A", "2-B", "3-D", "", ""],
-                        PETAK: ["3-C", "2-C", "3-A", "2-E", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 37, name: "Mekić Smajo", razrednik: null,
-                subjects: [{ name: "Informatika", fond: 19 }],
-                rows: [{
-                    subject: "Informatika", fond: 19,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "3*", "2-E", ""],
-                        UTORAK: ["", "", "1-C", "", "1-E", ""],
-                        SRIJEDA: ["4*", "1-B", "1-A", "", "1-D", "2-B"],
-                        ČETVRTAK: ["4*", "", "3*", "1-A", "1-C", "2-D"],
-                        PETAK: ["2-C", "1-B", "2-A", "", "1-D", "1-E"]
-                    }
-                }]
-            },
-            {
-                id: 38, name: "Huseinbašić Tarik", razrednik: null,
-                subjects: [{ name: "TIZO - muški", fond: 16 }],
-                isTizoMale: true,
-                rows: [{
-                    subject: "TIZO - muški (Popodnevni termini)", fond: 16,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "", ""],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            },
-            {
-                id: 39, name: "Haskić Selma", razrednik: "4-D",
-                subjects: [{ name: "TIZO - ženski", fond: 24 }],
-                isTizoFemale: true,
-                rows: [{
-                    subject: "TIZO - ženski (Popodnevni termini)", fond: 24,
-                    schedule: {
-                        PONEDJELJAK: ["", "", "", "", "", ""],
-                        UTORAK: ["", "", "", "", "", ""],
-                        SRIJEDA: ["", "", "", "", "", ""],
-                        ČETVRTAK: ["", "", "", "", "", ""],
-                        PETAK: ["", "", "", "", "", ""]
-                    }
-                }]
-            }
+            { id: 1, name: "Bektaš Fadil", razrednik: null, subjects: [{ name: "Kiraet", fond: 21 }], rows: [{ subject: "Kiraet", fond: 21, schedule: { PONEDJELJAK: ["4-E", "2-A", "4-C", "", "4-B", "3-B"], UTORAK: ["3-A", "2-A", "4-D", "", "3-C", "3-E"], SRIJEDA: ["3-C", "4-A", "3-B", "", "4-C", "4-B"], ČETVRTAK: ["3-E", "4-D", "2-A", "", "4-A", "3-A"], PETAK: ["4-E", "", "", "", "", ""] } }] },
+            { id: 2, name: "Čakić Nermina", razrednik: "2-C", subjects: [{ name: "Kiraet", fond: 21 }], rows: [{ subject: "Kiraet", fond: 21, schedule: { PONEDJELJAK: ["", "1-C", "", "2-E", "2-D", "1-E"], UTORAK: ["1-E", "", "1-A", "1-D", "2-E", "1-C"], SRIJEDA: ["2-C", "", "1-C", "2-D", "1-A", "1-E"], ČETVRTAK: ["1-D", "2-C", "", "", "", ""], PETAK: ["2-D", "1-A", "1-D", "", "2-C", "2-E"] } }] },
+            { id: 3, name: "Haseljić Fahrudin", razrednik: "1-B", subjects: [{ name: "Kiraet", fond: 12 }, { name: "Tefsir", fond: 10 }], rows: [{ subject: "Kiraet", fond: 12, schedule: { PONEDJELJAK: ["", "1-B", "2-B", "", "3*", ""], UTORAK: ["", "", "", "2-B", "", ""], SRIJEDA: ["", "", "", "4*", "1-B", "3-D"], ČETVRTAK: ["4*", "", "3*", "", "", ""], PETAK: ["3-D", "", "2-B", "1-B", "", ""] } }, { subject: "Tefsir", fond: 10, schedule: { PONEDJELJAK: ["", "", "", "", "", "3-D"], UTORAK: ["", "", "", "", "", "3-C"], SRIJEDA: ["", "", "", "3-E", "", ""], ČETVRTAK: ["", "3-A", "", "3-B", "3-E", "3-C"], PETAK: ["", "3-A", "", "", "3-B", "3-D"] } }] },
+            { id: 4, name: "Durgut Safet", razrednik: null, subjects: [{ name: "Akaid", fond: 2 }], rows: [{ subject: "Akaid", fond: 2, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["4-B", "4-C", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 5, name: "Hodžić Asim", razrednik: "4-A", subjects: [{ name: "Akaid", fond: 21 }], rows: [{ subject: "Akaid", fond: 21, schedule: { PONEDJELJAK: ["2-A", "2-D", "", "", "", ""], UTORAK: ["2-D", "", "2-C", "1-E", "3-D", "2-A"], SRIJEDA: ["3-B", "2-B", "", "2-E", "4-A", "3-E"], ČETVRTAK: ["2-C", "3-C", "1-E", "", "3-D", "3-E"], PETAK: ["", "3-C", "3-B", "2-B", "2-E", ""] } }] },
+            { id: 6, name: "Bešo-Haskić Lejla", razrednik: "3-A", subjects: [{ name: "Akaid", fond: 4 }, { name: "Fikh", fond: 18 }], rows: [{ subject: "Akaid", fond: 4, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["1-A", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "3-A", ""], ČETVRTAK: ["", "", "", "", "3-A", ""], PETAK: ["", "", "", "", "1-A", ""] } }, { subject: "Fikh", fond: 18, schedule: { PONEDJELJAK: ["1-E", "", "3*", "1-C", "1-D", "4*"], UTORAK: ["", "1-C", "1-D", "4-C", "", ""], SRIJEDA: ["4*", "4-E", "", "4-A", "", "2-E"], ČETVRTAK: ["", "4-B", "", "", "2-E", "1-B"], PETAK: ["", "", "1-E", "3*", "", "1-B"] } }] },
+            { id: 7, name: "Indžić Hamid", razrednik: null, subjects: [{ name: "Fikh", fond: 21 }], rows: [{ subject: "Fikh", fond: 21, schedule: { PONEDJELJAK: ["3-D", "2-B", "2-C", "1-A", "", "3-C"], UTORAK: ["2-B", "3-C", "3-B", "2-D", "3-E", "3-A"], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["3-A", "3-B", "2-C", "", "2-A", "1-A"], PETAK: ["4-D", "3-E", "2-D", "2-A", "3-D", ""] } }] },
+            { id: 8, name: "Omerdić Ahmed", razrednik: null, subjects: [{ name: "Ahlak", fond: 20 }, { name: "Akaid", fond: 1 }], rows: [{ subject: "Ahlak", fond: 20, schedule: { PONEDJELJAK: ["2-B", "3-C", "", "3-D", "4-A", "3-E"], UTORAK: ["", "", "3-A", "3-B", "1-D", "2-C"], SRIJEDA: ["2-E", "", "1-E", "1-B", "1-C", "2-D"], ČETVRTAK: ["", "", "", "4-E", "4-D", "2-A"], PETAK: ["1-A", "", "", "4-B", "4-C", ""] } }, { subject: "Akaid", fond: 1, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "4-D", "", "", "", ""] } }] },
+            { id: 9, name: "Adilović Ahmed", razrednik: null, subjects: [{ name: "Tefsir", fond: 5 }], rows: [{ subject: "Tefsir", fond: 5, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["4-A", "4-B", "4-C", "", "4-D", "4-E"], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 10, name: "Indžić Salih", razrednik: "1-A", subjects: [{ name: "Hadis", fond: 15 }, { name: "Akaid", fond: 6 }], rows: [{ subject: "Hadis", fond: 15, schedule: { PONEDJELJAK: ["", "", "", "3-E", "", ""], UTORAK: ["3-D", "", "", "3-C", "3-A", "3-B"], SRIJEDA: ["", "", "3-A", "4-E", "3-C", ""], ČETVRTAK: ["", "", "", "3-E", "", "3-D"], PETAK: ["3-B", "4-A", "4-B", "4-C", "4-D", ""] } }, { subject: "Akaid", fond: 6, schedule: { PONEDJELJAK: ["1-C", "", "1-B", "", "", ""], UTORAK: ["", "1-B", "", "", "", ""], SRIJEDA: ["", "1-C", "", "", "", "1-D"], ČETVRTAK: ["", "", "", "", "1-D", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 11, name: "Dautović Muharem", razrednik: null, subjects: [{ name: "Akaid", fond: 1 }, { name: "Povijest islama", fond: 20 }], rows: [{ subject: "Akaid", fond: 1, schedule: { PONEDJELJAK: ["", "4-E", "", "", "", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }, { subject: "Povijest islama", fond: 20, schedule: { PONEDJELJAK: ["1-B", "", "2-A", "2-C", "", ""], UTORAK: ["1-D", "1-E", "2-B", "1-A", "1-C", "2-D"], SRIJEDA: ["1-E", "2-D", "2-E", "1-A", "", ""], ČETVRTAK: ["2-B", "1-B", "1-D", "1-C", "", ""], PETAK: ["2-A", "2-E", "2-C", "", "", ""] } }] },
+            { id: 12, name: "Sušić Nermin", razrednik: null, subjects: [{ name: "Bosanski jezik i književnost", fond: 18 }], rows: [{ subject: "Bosanski jezik i književnost", fond: 18, schedule: { PONEDJELJAK: ["4-C", "4-D", "4-E", "", "", ""], UTORAK: ["4-D", "3-D", "4-E", "", "4-A", "4-B"], SRIJEDA: ["3-D", "4-C", "", "4-B", "", ""], ČETVRTAK: ["3-D", "4-C", "4-D", "4-A", "", ""], PETAK: ["4-B", "4-E", "4-A", "", "", ""] } }] },
+            { id: 13, name: "Đurek Đenana", razrednik: "3-B", subjects: [{ name: "Bosanski jezik i književnost", fond: 18 }], rows: [{ subject: "Bosanski jezik i književnost", fond: 18, schedule: { PONEDJELJAK: ["", "", "", "2-D", "", "2-C"], UTORAK: ["", "2-B", "2-A", "", "3-B", "2-E"], SRIJEDA: ["", "2-A", "2-C", "", "2-B", "3-B"], ČETVRTAK: ["", "", "", "2-E", "2-D", "3-B"], PETAK: ["", "2-B", "2-E", "2-C", "2-A", "2-D"] } }] },
+            { id: 14, name: "Beganović Selma", razrednik: null, subjects: [{ name: "Bosanski jezik i književnost", fond: 18 }], rows: [{ subject: "Bosanski jezik i književnost", fond: 18, schedule: { PONEDJELJAK: ["", "1-A", "", "1-B", "1-E", "1-D"], UTORAK: ["1-C", "1-D", "3-E", "", "", ""], SRIJEDA: ["1-C", "3-E", "1-D", "1-E", "", "1-A"], ČETVRTAK: ["1-E", "1-C", "1-B", "", "", ""], PETAK: ["", "", "", "1-A", "1-B", "3-E"] } }] },
+            { id: 15, name: "Hodžić-Ašlipahić Bahrija", razrednik: null, subjects: [{ name: "Bosanski jezik i književnost", fond: 6 }], rows: [{ subject: "Bosanski jezik i književnost", fond: 6, schedule: { PONEDJELJAK: ["", "", "", "3-C", "", "3-A"], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["3-A", "3-C", "", "", "", ""], ČETVRTAK: ["", "", "", "3-C", "3-A", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 16, name: "Porča Lejla", razrednik: "3-C", subjects: [{ name: "Arapski jezik", fond: 24 }], rows: [{ subject: "Arapski jezik", fond: 24, schedule: { PONEDJELJAK: ["3-C", "", "2-E", "4-D", "2-C", ""], UTORAK: ["2-C", "3-E", "2-E", "4-E", "", "4-D"], SRIJEDA: ["3-E", "2-C", "2-D", "", "4-D", "4-C"], ČETVRTAK: ["3-C", "2-E", "4-C", "2-D", "4-E", ""], PETAK: ["3-E", "2-D", "4-C", "4-E", "3-C", ""] } }] },
+            { id: 17, name: "Šošić Dževdet", razrednik: null, subjects: [{ name: "Arapski jezik", fond: 3 }], rows: [{ subject: "Arapski jezik", fond: 3, schedule: { PONEDJELJAK: ["", "3-D", "", "", "", ""], UTORAK: ["", "", "3-D", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "3-D", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 18, name: "Lendo Rešad", razrednik: null, subjects: [{ name: "Arapski jezik", fond: 15 }], rows: [{ subject: "Arapski jezik", fond: 15, schedule: { PONEDJELJAK: ["1-D", "1-E", "1-A", "", "", ""], UTORAK: ["1-B", "1-A", "1-E", "1-C", "", ""], SRIJEDA: ["1-B", "1-D", "", "", "", ""], ČETVRTAK: ["1-B", "1-D", "1-C", "", "", ""], PETAK: ["1-C", "1-E", "1-A", "", "", ""] } }] },
+            { id: 19, name: "Makić Amina", razrednik: null, subjects: [{ name: "Arapski jezik", fond: 18 }], rows: [{ subject: "Arapski jezik", fond: 18, schedule: { PONEDJELJAK: ["4-B", "3-B", "", "3-A", "2-B", "2-A"], UTORAK: ["", "3-A", "", "4-A", "4-B", ""], SRIJEDA: ["", "", "2-B", "3-B", "2-A", ""], ČETVRTAK: ["2-A", "", "4-A", "2-B", "4-B", ""], PETAK: ["", "", "", "4-A", "3-A", "3-B"] } }] },
+            { id: 20, name: "Avdagić Kemal", razrednik: null, subjects: [{ name: "Engleski jezik", fond: 4 }], rows: [{ subject: "Engleski jezik", fond: 4, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["", "4-A", "4-B", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "4-A", "4-B", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 21, name: "Đulabić Aida", razrednik: "1-D", subjects: [{ name: "Engleski jezik", fond: 19 }], rows: [{ subject: "Engleski jezik", fond: 19, schedule: { PONEDJELJAK: ["1-A", "", "1-E", "", "", ""], UTORAK: ["", "", "", "", "1-B", "1-E"], SRIJEDA: ["1-D", "1-A", "", "1-C", "3-D", "3-C"], ČETVRTAK: ["1-C", "1-E", "", "1-B", "1-A", "1-D"], PETAK: ["1-B", "1-D", "3-D", "", "1-C", "3-C"] } }] },
+            { id: 22, name: "Omerašević Jasmina", razrednik: "4-E", subjects: [{ name: "Engleski jezik", fond: 18 }], rows: [{ subject: "Engleski jezik", fond: 18, schedule: { PONEDJELJAK: ["", "", "", "", "2-A", "4-ET"], UTORAK: ["", "", "", "2-C", "2-D", ""], SRIJEDA: ["", "", "4-ET", "2-C", "2-E", "2-A"], ČETVRTAK: ["2-D", "", "2-E", "4-D", "2-C", "4-E"], PETAK: ["2-E", "", "4-D", "2-D", "4-E", "2-A"] } }] },
+            { id: 23, name: "Perenda Šejla", razrednik: null, subjects: [{ name: "Engleski jezik", fond: 15 }], rows: [{ subject: "Engleski jezik", fond: 15, schedule: { PONEDJELJAK: ["", "3-A", "3*", "", "", ""], UTORAK: ["", "", "", "3-E", "", "2-B"], SRIJEDA: ["4-TE", "", "3-E", "4-C", "3-B", ""], ČETVRTAK: ["4-TE", "2-B", "", "4-C", "3-B", ""], PETAK: ["", "", "", "3*", "2-B", "3-A"] } }] },
+            { id: 24, name: "Dervić Azemina", razrednik: null, subjects: [{ name: "Turski jezik", fond: 6 }], rows: [{ subject: "Turski jezik", fond: 6, schedule: { PONEDJELJAK: ["", "", "", "", "3*", "4-ET"], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["4-TE", "", "4-ET", "", "", ""], ČETVRTAK: ["4-TE", "", "3*", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 25, name: "Tarakčija Ifeta", razrednik: null, subjects: [{ name: "Historija", fond: 24 }], rows: [{ subject: "Historija", fond: 24, schedule: { PONEDJELJAK: ["2-C", "", "1-C", "2-A", "3*", "4*"], UTORAK: ["2-E", "", "2-D", "2-A", "1-A", "1-B"], SRIJEDA: ["", "2-E", "4*", "", "1-E", "2-C"], ČETVRTAK: ["1-A", "", "3*", "1-D", "1-E", "2-B"], PETAK: ["1-D", "", "1-B", "1-C", "2-D", "2-B"] } }] },
+            { id: 26, name: "Zahirović Armin", razrednik: null, subjects: [{ name: "Geografija", fond: 14 }], rows: [{ subject: "Geografija", fond: 14, schedule: { PONEDJELJAK: ["3-A", "3-E", "3*", "3-B", "", ""], UTORAK: ["3-C", "3-B", "", "", "", ""], SRIJEDA: ["4*", "3-D", "", "", "", ""], ČETVRTAK: ["4*", "3-E", "", "", "", ""], PETAK: ["3-A", "3-D", "3-C", "3*", "", ""] } }] },
+            { id: 27, name: "Jašarević Armin", razrednik: null, subjects: [{ name: "Filozofija", fond: 10 }, { name: "Logika", fond: 5 }], rows: [{ subject: "Filozofija", fond: 10, schedule: { PONEDJELJAK: ["4-D", "", "4-B", "4-A", "4-C", ""], UTORAK: ["4-E", "", "4-A", "", "4-C", ""], SRIJEDA: ["", "4-B", "", "", "4-E", "4-D"], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }, { subject: "Logika", fond: 5, schedule: { PONEDJELJAK: ["", "4-A", "", "", "", ""], UTORAK: ["", "4-E", "", "4-B", "", "4-C"], SRIJEDA: ["", "", "", "4-D", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 28, name: "Nuhić Ćorhusić Emina", razrednik: null, subjects: [{ name: "Sociologija", fond: 10 }], rows: [{ subject: "Sociologija", fond: 10, schedule: { PONEDJELJAK: ["", "4-B", "4-A", "4-E", "4-D", ""], UTORAK: ["4-C", "4-D", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "4-E", "", "4-B", "4-C", "4-A"], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 29, name: "Tekešić Polić Aldina", razrednik: null, subjects: [{ name: "Psihologija", fond: 7 }], rows: [{ subject: "Psihologija", fond: 7, schedule: { PONEDJELJAK: ["3-B", "", "3*", "", "", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "3-A", "3-C", "3-D", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "3*", "3-E", ""] } }] },
+            { id: 30, name: "Muratović Nejra", razrednik: "3-D", subjects: [{ name: "Pedagogija", fond: 2 }], rows: [{ subject: "Pedagogija", fond: 2, schedule: { PONEDJELJAK: ["", "", "", "", "3*", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "3*", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 31, name: "Kesten Ermin", razrednik: null, subjects: [{ name: "Demokratija", fond: 10 }], rows: [{ subject: "Demokratija", fond: 10, schedule: { PONEDJELJAK: ["4-A", "4-C", "4-D", "4-B", "4-E", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["4-C", "4-B", "4-E", "4-D", "4-A", ""] } }] },
+            { id: 32, name: "Karadža Admira", razrednik: "1-C", subjects: [{ name: "Matematika", fond: 22 }], rows: [{ subject: "Matematika", fond: 22, schedule: { PONEDJELJAK: ["", "1-D", "", "4-C", "1-A", "1-C"], UTORAK: ["", "", "1-B", "4-D", "4-E", "3-D"], SRIJEDA: ["", "4-D", "3-D", "3-C", "3-E", "1-B"], ČETVRTAK: ["", "", "4-E", "1-E", "3-C", "1-C"], PETAK: ["", "4-C", "3-E", "1-D", "1-E", "1-A"] } }] },
+            { id: 33, name: "Jašarević Enver", razrednik: "4-B", subjects: [{ name: "Matematika", fond: 22 }], rows: [{ subject: "Matematika", fond: 22, schedule: { PONEDJELJAK: ["", "", "3*", "", "2-E", "4*"], UTORAK: ["3-B", "2-D", "", "3-A", "2-A", "4-A"], SRIJEDA: ["2-B", "", "4*", "2-A", "4-B", "3-A"], ČETVRTAK: ["", "2-D", "", "2-C", "2-B", "2-E"], PETAK: ["4-A", "3-B", "", "3*", "4-B", "2-C"] } }] },
+            { id: 34, name: "Smajić Aldijana", razrednik: null, subjects: [{ name: "Fizika", fond: 20 }], rows: [{ subject: "Fizika", fond: 20, schedule: { PONEDJELJAK: ["2-D", "2-E", "", "1-D", "1-B", "2-B"], UTORAK: ["2-A", "2-C", "", "1-B", "2-B", "1-A"], SRIJEDA: ["2-A", "1-E", "", "1-D", "2-C", "1-C"], ČETVRTAK: ["2-E", "1-A", "2-D", "", "", ""], PETAK: ["1-E", "1-C", "", "", "", ""] } }] },
+            { id: 35, name: "Begović Merima", razrednik: "4-C", subjects: [{ name: "Hemija", fond: 20 }], rows: [{ subject: "Hemija", fond: 20, schedule: { PONEDJELJAK: ["2-E", "", "1-D", "1-E", "1-C", "2-D"], UTORAK: ["", "", "", "2-E", "2-C", "1-D"], SRIJEDA: ["1-A", "", "1-B", "2-B", "2-D", ""], ČETVRTAK: ["", "", "1-A", "2-A", "1-B", "2-C"], PETAK: ["2-B", "2-A", "1-C", "1-E", "", ""] } }] },
+            { id: 36, name: "Kadrić Enisa", razrednik: null, subjects: [{ name: "Biologija", fond: 20 }], rows: [{ subject: "Biologija", fond: 20, schedule: { PONEDJELJAK: ["3-E", "2-C", "2-D", "2-B", "", ""], UTORAK: ["3-E", "2-E", "3-C", "3-D", "", ""], SRIJEDA: ["2-D", "3-B", "2-A", "3-A", "", ""], ČETVRTAK: ["3-B", "2-A", "2-B", "3-D", "", ""], PETAK: ["3-C", "2-C", "3-A", "2-E", "", ""] } }] },
+            { id: 37, name: "Mekić Smajo", razrednik: null, subjects: [{ name: "Informatika", fond: 19 }], rows: [{ subject: "Informatika", fond: 19, schedule: { PONEDJELJAK: ["", "", "", "3*", "2-E", ""], UTORAK: ["", "", "1-C", "", "1-E", ""], SRIJEDA: ["4*", "1-B", "1-A", "", "1-D", "2-B"], ČETVRTAK: ["4*", "", "3*", "1-A", "1-C", "2-D"], PETAK: ["2-C", "1-B", "2-A", "", "1-D", "1-E"] } }] },
+            { id: 38, name: "Huseinbašić Tarik", razrednik: null, subjects: [{ name: "TIZO - muški", fond: 16 }], isTizoMale: true, rows: [{ subject: "TIZO - muški (Popodnevni termini)", fond: 16, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] },
+            { id: 39, name: "Haskić Selma", razrednik: "4-D", subjects: [{ name: "TIZO - ženski", fond: 24 }], isTizoFemale: true, rows: [{ subject: "TIZO - ženski (Popodnevni termini)", fond: 24, schedule: { PONEDJELJAK: ["", "", "", "", "", ""], UTORAK: ["", "", "", "", "", ""], SRIJEDA: ["", "", "", "", "", ""], ČETVRTAK: ["", "", "", "", "", ""], PETAK: ["", "", "", "", "", ""] } }] }
         ];
 
-        const ALL_CLASSES = [
-            "1-A", "1-B", "1-C", "1-D", "1-E",
-            "2-A", "2-B", "2-C", "2-D", "2-E",
-            "3-A", "3-B", "3-C", "3-D", "3-E",
-            "4-A", "4-B", "4-C", "4-D", "4-E"
-        ];
-
-        // =========================================================================
-        // 2. APPLICATION STATE & HELPERS
-        // =========================================================================
-        const state = {
-            simDay: "AUTO",
-            simPeriod: "1",
-            activeTab: "professors",
-            searchQuery: "",
-            selectedProfessorId: null,
-            selectedClass: "1-A"
-        };
+        const ALL_CLASSES = ["1-A", "1-B", "1-C", "1-D", "1-E", "2-A", "2-B", "2-C", "2-D", "2-E", "3-A", "3-B", "3-C", "3-D", "3-E", "4-A", "4-B", "4-C", "4-D", "4-E"];
+        const state = { simDay: "AUTO", simPeriod: "1", activeTab: "professors", searchQuery: "", selectedProfessorId: null, selectedClass: "1-A" };
 
         function parseCell(raw) {
             if (!raw || raw.trim() === "") return null;
@@ -1752,57 +387,27 @@
         function getProfessorActivity(prof, day, periodNum) {
             if (!DAYS.includes(day) || !periodNum || periodNum === "ODMOR") return null;
             const p = parseInt(periodNum, 10);
-
             if (p >= 1 && p <= 6) {
                 for (let i = 0; i < prof.rows.length; i++) {
                     const row = prof.rows[i];
                     const cellRaw = row.schedule[day] ? row.schedule[day][p - 1] : "";
                     const parsed = parseCell(cellRaw);
-                    if (parsed) {
-                        return {
-                            subject: row.subject,
-                            className: parsed.text,
-                            displayClass: parsed.displayText,
-                            isElective: parsed.isElective,
-                            period: p
-                        };
-                    }
+                    if (parsed) return { subject: row.subject, className: parsed.text, displayClass: parsed.displayText, isElective: parsed.isElective, period: p };
                 }
             }
-
             if (p === 7 && day === "SRIJEDA" && prof.razrednik) {
-                return {
-                    subject: "Čas odjeljenske zajednice",
-                    className: prof.razrednik,
-                    displayClass: prof.razrednik + " (Odj. zajednica)",
-                    isElective: false,
-                    period: 7
-                };
+                return { subject: "Čas odjeljenske zajednice", className: prof.razrednik, displayClass: prof.razrednik + " (Odj. zajednica)", isElective: false, period: 7 };
             }
-
             if (p >= 7 && p <= 12) {
                 if (prof.isTizoMale && AFTERNOON_TIZO.male[day] && AFTERNOON_TIZO.male[day][p]) {
                     const cls = AFTERNOON_TIZO.male[day][p];
-                    return {
-                        subject: "TIZO - muški",
-                        className: cls,
-                        displayClass: cls + " (Muško odjeljenje)",
-                        isElective: false,
-                        period: p
-                    };
+                    return { subject: "TIZO - muški", className: cls, displayClass: cls + " (Muško odjeljenje)", isElective: false, period: p };
                 }
                 if (prof.isTizoFemale && AFTERNOON_TIZO.female[day] && AFTERNOON_TIZO.female[day][p]) {
                     const cls = AFTERNOON_TIZO.female[day][p];
-                    return {
-                        subject: "TIZO - ženski",
-                        className: cls,
-                        displayClass: cls + " (Žensko odjeljenje)",
-                        isElective: false,
-                        period: p
-                    };
+                    return { subject: "TIZO - ženski", className: cls, displayClass: cls + " (Žensko odjeljenje)", isElective: false, period: p };
                 }
             }
-
             return null;
         }
 
@@ -1811,126 +416,44 @@
             const startP = currentPeriod === "ODMOR" ? 4 : (parseInt(currentPeriod, 10) || 0) + 1;
             for (let p = Math.max(1, startP); p <= 12; p++) {
                 const act = getProfessorActivity(prof, day, p);
-                if (act) {
-                    return Object.assign({ period: p }, act);
-                }
+                if (act) return Object.assign({ period: p }, act);
             }
             return null;
         }
 
-        function pad2(n) {
-            return n < 10 ? "0" + n : String(n);
-        }
+        function pad2(n) { return n < 10 ? "0" + n : String(n); }
 
         function getCurrentContext() {
             const now = new Date();
             const timeStr = pad2(now.getHours()) + ":" + pad2(now.getMinutes()) + ":" + pad2(now.getSeconds());
-
             if (state.simDay !== "AUTO") {
                 const pVal = state.simPeriod;
-                let periodLabel = "";
-                if (pVal === "ODMOR") {
-                    periodLabel = "Veliki odmor (10:25 - 10:45)";
-                } else {
-                    const info = PERIOD_TIMES[parseInt(pVal, 10)];
-                    periodLabel = info.label + " (" + info.start + " - " + info.end + ")";
-                }
-                return {
-                    isSimulated: true,
-                    timeStr: timeStr,
-                    day: state.simDay,
-                    isSchoolDay: true,
-                    period: pVal,
-                    periodLabel: periodLabel,
-                    statusType: pVal === "ODMOR" ? "BREAK" : "IN_PERIOD"
-                };
+                let periodLabel = pVal === "ODMOR" ? "Veliki odmor (09:55 - 10:15)" : PERIOD_TIMES[parseInt(pVal, 10)].label + " (" + PERIOD_TIMES[parseInt(pVal, 10)].start + " - " + PERIOD_TIMES[parseInt(pVal, 10)].end + ")";
+                return { isSimulated: true, timeStr, day: state.simDay, isSchoolDay: true, period: pVal, periodLabel, statusType: pVal === "ODMOR" ? "BREAK" : "IN_PERIOD" };
             }
-
-            const jsDay = now.getDay();
-            const dayMap = {
-                0: "NEDJELJA",
-                1: "PONEDJELJAK",
-                2: "UTORAK",
-                3: "SRIJEDA",
-                4: "ČETVRTAK",
-                5: "PETAK",
-                6: "SUBOTA"
-            };
-            const currentDay = dayMap[jsDay];
+            const dayMap = { 0: "NEDJELJA", 1: "PONEDJELJAK", 2: "UTORAK", 3: "SRIJEDA", 4: "ČETVRTAK", 5: "PETAK", 6: "SUBOTA" };
+            const currentDay = dayMap[now.getDay()];
             const isSchoolDay = DAYS.indexOf(currentDay) !== -1;
             const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-            if (!isSchoolDay) {
-                return {
-                    isSimulated: false,
-                    timeStr: timeStr,
-                    day: currentDay,
-                    isSchoolDay: false,
-                    period: null,
-                    periodLabel: "Vikend — nema redovne nastave",
-                    statusType: "WEEKEND"
-                };
-            }
-
-            if (currentMinutes >= 10 * 60 + 25 && currentMinutes < 10 * 60 + 45) {
-                return {
-                    isSimulated: false,
-                    timeStr: timeStr,
-                    day: currentDay,
-                    isSchoolDay: true,
-                    period: "ODMOR",
-                    periodLabel: "Veliki odmor (10:25 - 10:45)",
-                    statusType: "BREAK"
-                };
-            }
+            if (!isSchoolDay) return { isSimulated: false, timeStr, day: currentDay, isSchoolDay: false, period: null, periodLabel: "Vikend — nema redovne nastave", statusType: "WEEKEND" };
+            if (currentMinutes >= 9 * 60 + 55 && currentMinutes < 10 * 60 + 15) return { isSimulated: false, timeStr, day: currentDay, isSchoolDay: true, period: "ODMOR", periodLabel: "Veliki odmor (09:55 - 10:15)", statusType: "BREAK" };
 
             for (let p = 1; p <= 12; p++) {
                 const slot = PERIOD_TIMES[p];
                 if (currentMinutes >= slot.startMin && currentMinutes < slot.endMin) {
-                    return {
-                        isSimulated: false,
-                        timeStr: timeStr,
-                        day: currentDay,
-                        isSchoolDay: true,
-                        period: String(p),
-                        periodLabel: slot.label + " (" + slot.start + " - " + slot.end + ")",
-                        statusType: "IN_PERIOD"
-                    };
+                    return { isSimulated: false, timeStr, day: currentDay, isSchoolDay: true, period: String(p), periodLabel: slot.label + " (" + slot.start + " - " + slot.end + ")", statusType: "IN_PERIOD" };
                 }
             }
-
-            if (currentMinutes >= 8 * 60 && currentMinutes < 18 * 60 + 25) {
-                return {
-                    isSimulated: false,
-                    timeStr: timeStr,
-                    day: currentDay,
-                    isSchoolDay: true,
-                    period: "ODMOR",
-                    periodLabel: "Mali odmor između časova",
-                    statusType: "BREAK"
-                };
-            }
-
-            return {
-                isSimulated: false,
-                timeStr: timeStr,
-                day: currentDay,
-                isSchoolDay: true,
-                period: null,
-                periodLabel: "Nastava je završena / Van radnog vremena",
-                statusType: "AFTER_HOURS"
-            };
+            if (currentMinutes >= 7 * 60 + 30 && currentMinutes < 17 * 60 + 55) return { isSimulated: false, timeStr, day: currentDay, isSchoolDay: true, period: "ODMOR", periodLabel: "Pauza između časova", statusType: "BREAK" };
+            return { isSimulated: false, timeStr, day: currentDay, isSchoolDay: true, period: null, periodLabel: "Nastava je završena", statusType: "AFTER_HOURS" };
         }
 
-        // =========================================================================
-        // 3. UI RENDERING FUNCTIONS
-        // =========================================================================
         function updateHeaderAndLiveCounts() {
             const ctx = getCurrentContext();
             document.getElementById("clockDisplay").textContent = ctx.timeStr;
             document.getElementById("dayDisplay").textContent = ctx.day;
             document.getElementById("periodStatusText").textContent = ctx.periodLabel;
-
             const indicator = document.getElementById("liveIndicator");
             const modeBadge = document.getElementById("modeBadge");
             const resetBtn = document.getElementById("resetLiveBtn");
@@ -1960,28 +483,10 @@
             const ctx = getCurrentContext();
             const query = state.searchQuery.toLowerCase().trim();
             const grid = document.getElementById("professorsGrid");
-
-            const filtered = PROFESSORS.filter(function(prof) {
-                if (!query) return true;
-                if (prof.name.toLowerCase().indexOf(query) !== -1) return true;
-                for (let i = 0; i < prof.subjects.length; i++) {
-                    if (prof.subjects[i].name.toLowerCase().indexOf(query) !== -1) return true;
-                }
-                if (prof.razrednik && prof.razrednik.toLowerCase().indexOf(query) !== -1) return true;
-                for (let r = 0; r < prof.rows.length; r++) {
-                    const sched = prof.rows[r].schedule;
-                    for (let d = 0; d < DAYS.length; d++) {
-                        const arr = sched[DAYS[d]] || [];
-                        for (let c = 0; c < arr.length; c++) {
-                            if (arr[c] && arr[c].toLowerCase().indexOf(query) !== -1) return true;
-                        }
-                    }
-                }
-                return false;
-            });
+            const filtered = PROFESSORS.filter(p => !query || p.name.toLowerCase().includes(query) || p.subjects.some(s => s.name.toLowerCase().includes(query)) || (p.razrednik && p.razrednik.toLowerCase().includes(query)));
 
             if (filtered.length === 0) {
-                grid.innerHTML = '<div class="card" style="grid-column: 1 / -1; text-align: center; padding: 32px;"><strong>Nema rezultata pretrage</strong><p style="font-size: 12px; color: var(--slate-500); margin-top: 4px;">Pokušaj upisati drugo ime profesora, predmet ili odjeljenje (npr. 2-C).</p></div>';
+                grid.innerHTML = '<div class="card" style="grid-column: 1 / -1; text-align: center; padding: 32px;"><strong>Nema rezultata</strong></div>';
                 return;
             }
 
@@ -1989,60 +494,25 @@
             for (let i = 0; i < filtered.length; i++) {
                 const prof = filtered[i];
                 const activity = ctx.statusType === "IN_PERIOD" ? getProfessorActivity(prof, ctx.day, ctx.period) : null;
-                let totalFond = 0;
-                const subjNames = [];
-                for (let s = 0; s < prof.subjects.length; s++) {
-                    totalFond += prof.subjects[s].fond;
-                    subjNames.push(prof.subjects[s].name);
-                }
+                let totalFond = prof.subjects.reduce((sum, s) => sum + s.fond, 0);
                 const parts = prof.name.split(" ");
-                const initials = (parts[0] ? parts[0][0] : "") + (parts[1] ? parts[1][0] : "");
+                const initials = (parts[0]?.[0] || "") + (parts[1]?.[0] || "");
+                let footerHtml = activity ? `<div class="prof-footer-active"><span class="active-class-label"><span class="pulse-dot-sm"></span> Na času: ${activity.displayClass}</span><span class="subj-pill">${activity.subject}</span></div>` : `<div class="prof-footer-idle"><span>Fond: <strong>${totalFond}h</strong></span><span class="link-arrow">Raspored →</span></div>`;
 
-                let footerHtml = "";
-                if (ctx.statusType === "IN_PERIOD") {
-                    if (activity) {
-                        footerHtml =
-                            '<div class="prof-footer-active">' +
-                                '<span class="active-class-label"><span class="pulse-dot-sm"></span> Na času: ' + activity.displayClass + '</span>' +
-                                '<span class="subj-pill">' + activity.subject + '</span>' +
-                            '</div>';
-                    } else {
-                        footerHtml =
-                            '<div class="prof-footer-idle">' +
-                                '<span>Slobodan/Slobodna ovaj čas</span>' +
-                                '<span class="link-arrow">Raspored →</span>' +
-                            '</div>';
-                    }
-                } else if (ctx.statusType === "BREAK") {
-                    footerHtml =
-                        '<div class="prof-footer-idle">' +
-                            '<span style="color: var(--amber-700); font-weight: 600;">Odmor</span>' +
-                            '<span class="link-arrow">Vidi raspored →</span>' +
-                        '</div>';
-                } else {
-                    footerHtml =
-                        '<div class="prof-footer-idle">' +
-                            '<span>Ukupan fond: <strong style="color: var(--slate-700);">' + totalFond + 'h</strong></span>' +
-                            '<span class="link-arrow">Otvori raspored →</span>' +
-                        '</div>';
-                }
-
-                html +=
-                    '<div class="prof-card ' + (activity ? 'in-class' : '') + '" onclick="openProfessorModal(' + prof.id + ')">' +
-                        '<div class="prof-card-top">' +
-                            '<div class="prof-ident">' +
-                                '<div class="avatar">' + initials + '</div>' +
-                                '<div>' +
-                                    '<div class="prof-name">' + prof.name + '</div>' +
-                                    '<div class="prof-subj">' + subjNames.join(" • ") + '</div>' +
-                                '</div>' +
-                            '</div>' +
-                            (prof.razrednik ? '<span class="raz-tag">Raz: ' + prof.razrednik + '</span>' : '') +
-                        '</div>' +
-                        footerHtml +
-                    '</div>';
+                html += `<div class="prof-card ${activity ? 'in-class' : ''}" onclick="openProfessorModal(${prof.id})">
+                    <div class="prof-card-top">
+                        <div class="prof-ident">
+                            <div class="avatar">${initials}</div>
+                            <div>
+                                <div class="prof-name">${prof.name}</div>
+                                <div class="prof-subj">${prof.subjects.map(s => s.name).join(" • ")}</div>
+                            </div>
+                        </div>
+                        ${prof.razrednik ? `<span class="raz-tag">Raz: ${prof.razrednik}</span>` : ''}
+                    </div>
+                    ${footerHtml}
+                </div>`;
             }
-
             grid.innerHTML = html;
         }
 
@@ -2053,43 +523,36 @@
             const subtitle = document.getElementById("liveSectionSubtitle");
 
             if (ctx.statusType !== "IN_PERIOD") {
-                title.textContent = ctx.day + " — " + ctx.periodLabel;
-                subtitle.textContent = "Trenutno nema aktivnih časova. Odaberi neki od časova u traci za simulaciju iznad.";
-                grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 28px 12px; color: var(--slate-600); font-size: 13px;"><strong>' + ctx.periodLabel + '</strong><p style="margin-top: 6px; font-size: 12px; color: var(--slate-500);">Koristi opciju <strong>Vremenski režim</strong> na vrhu stranice da simuliraš radni dan i čas.</p></div>';
+                title.textContent = `${ctx.day} — ${ctx.periodLabel}`;
+                subtitle.textContent = "Trenutno nema aktivnih časova.";
+                grid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 28px; color: var(--slate-600);"><strong>${ctx.periodLabel}</strong></div>`;
                 return;
             }
 
-            title.textContent = ctx.day + " • " + ctx.periodLabel;
+            title.textContent = `${ctx.day} • ${ctx.periodLabel}`;
             const activeList = [];
             for (let i = 0; i < PROFESSORS.length; i++) {
                 const act = getProfessorActivity(PROFESSORS[i], ctx.day, ctx.period);
-                if (act) {
-                    activeList.push({ prof: PROFESSORS[i], act: act });
-                }
+                if (act) activeList.push({ prof: PROFESSORS[i], act });
             }
-
-            activeList.sort(function(a, b) {
-                return a.act.className.localeCompare(b.act.className);
-            });
-
-            subtitle.textContent = "Trenutno nastavu izvodi " + activeList.length + " profesora.";
+            activeList.sort((a, b) => a.act.className.localeCompare(b.act.className));
+            subtitle.textContent = `Trenutno nastavu izvodi ${activeList.length} profesora.`;
 
             if (activeList.length === 0) {
-                grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 20px; color: var(--slate-500);">Nema evidentirane nastave u ovom terminu.</div>';
+                grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 20px;">Nema nastave.</div>';
                 return;
             }
 
             let html = "";
             for (let i = 0; i < activeList.length; i++) {
                 const item = activeList[i];
-                html +=
-                    '<div class="live-item" onclick="openProfessorModal(' + item.prof.id + ')">' +
-                        '<div style="min-width: 0;">' +
-                            '<div style="font-size: 11px; font-weight: 700; color: var(--emerald-700);">' + item.act.subject + '</div>' +
-                            '<div style="font-size: 14px; font-weight: 800; color: var(--slate-900);">' + item.prof.name + '</div>' +
-                        '</div>' +
-                        '<span class="class-badge-lg ' + (item.act.isElective ? 'elective-badge' : '') + '">' + item.act.className + '</span>' +
-                    '</div>';
+                html += `<div class="live-item" onclick="openProfessorModal(${item.prof.id})">
+                    <div>
+                        <div style="font-size: 11px; font-weight: 700; color: var(--emerald-700);">${item.act.subject}</div>
+                        <div style="font-size: 14px; font-weight: 800; color: var(--slate-900);">${item.prof.name}</div>
+                    </div>
+                    <span class="class-badge-lg ${item.act.isElective ? 'elective-badge' : ''}">${item.act.className}</span>
+                </div>`;
             }
             grid.innerHTML = html;
         }
@@ -2097,29 +560,17 @@
         function renderClassTimetable() {
             const cls = state.selectedClass;
             const container = document.getElementById("classTimetableContainer");
-            const razProf = PROFESSORS.find(function(p) { return p.razrednik === cls; });
+            const razProf = PROFESSORS.find(p => p.razrednik === cls);
 
-            let html =
-                '<div style="margin-bottom: 12px; background: var(--emerald-50); border: 1px solid var(--emerald-200); padding: 10px 14px; border-radius: 12px; font-size: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;">' +
-                    '<span>Odjeljenje: <strong style="color: var(--emerald-800); font-size: 14px;">' + cls + '</strong></span>' +
-                    '<span>Razrednik: <strong>' + (razProf ? razProf.name : 'Nije navedeno') + '</strong> • Odj. zajednica: <strong>Srijeda, 7. čas</strong></span>' +
-                '</div>' +
-                '<div class="table-wrap">' +
-                '<table>' +
-                    '<thead><tr>' +
-                        '<th class="sticky-col">Čas</th>' +
-                        DAYS.map(function(d) { return '<th>' + d + '</th>'; }).join("") +
-                    '</tr></thead>' +
-                    '<tbody>';
+            let html = `<div style="margin-bottom: 12px; background: var(--emerald-50); border: 1px solid var(--emerald-200); padding: 10px 14px; border-radius: 12px; font-size: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;">
+                <span>Odjeljenje: <strong style="color: var(--emerald-800); font-size: 14px;">${cls}</strong></span>
+                <span>Razrednik: <strong>${razProf ? razProf.name : 'Nije navedeno'}</strong> • Odj. zajednica: <strong>Srijeda, 7. čas</strong></span>
+            </div>
+            <div class="table-wrap"><table><thead><tr><th class="sticky-col">Čas</th>${DAYS.map(d => `<th>${d}</th>`).join("")}</tr></thead><tbody>`;
 
             for (let p = 1; p <= 6; p++) {
                 const slot = PERIOD_TIMES[p];
-                html += '<tr>' +
-                    '<td class="sticky-col">' +
-                        '<div style="font-weight: 700; color: var(--slate-900);">' + slot.label + '</div>' +
-                        '<div style="font-size: 11px; color: var(--slate-400);">' + slot.start + ' - ' + slot.end + '</div>' +
-                    '</td>';
-
+                html += `<tr><td class="sticky-col"><div style="font-weight: 700;">${slot.label}</div><div style="font-size: 11px; color: var(--slate-400);">${slot.start} - ${slot.end}</div></td>`;
                 for (let d = 0; d < DAYS.length; d++) {
                     const day = DAYS[d];
                     const matches = [];
@@ -2127,7 +578,7 @@
                         const prof = PROFESSORS[i];
                         for (let r = 0; r < prof.rows.length; r++) {
                             const row = prof.rows[r];
-                            const cellRaw = row.schedule[day] ? row.schedule[day][p - 1] : "";
+                            const cellRaw = row.schedule[day]?.[p - 1] || "";
                             if (!cellRaw) continue;
                             const clean = cellRaw.replace("*", "");
                             const isDirectMatch = clean === cls;
@@ -2137,229 +588,93 @@
 
                             if (isDirectMatch || isElectiveGeneral3 || isElectiveGeneral4 || isPairedFourth) {
                                 let displayName = row.subject;
-                                if (isElectiveGeneral3 || isElectiveGeneral4) {
-                                    displayName = row.subject + " (Izborna)";
-                                } else if (isPairedFourth) {
-                                    displayName = row.subject + " (" + clean + ")";
-                                }
-                                matches.push({
-                                    prof: prof,
-                                    subject: displayName,
-                                    isElective: isElectiveGeneral3 || isElectiveGeneral4 || cellRaw.includes("*")
-                                });
+                                if (isElectiveGeneral3 || isElectiveGeneral4) displayName = row.subject + " (Izborna)";
+                                matches.push({ prof, subject: displayName, isElective: isElectiveGeneral3 || isElectiveGeneral4 || cellRaw.includes("*") });
                             }
                         }
                     }
-
                     if (matches.length > 0) {
-                        html += '<td style="vertical-align: top;">' +
-                            matches.map(function(m) {
-                                const boxStyle = m.isElective 
-                                    ? 'cursor: pointer; text-align: left; margin-bottom: 4px; background: var(--amber-50); border-color: var(--amber-300); color: var(--amber-950);'
-                                    : 'cursor: pointer; text-align: left; margin-bottom: 4px;';
-                                const subColor = m.isElective ? 'color: var(--amber-800); font-weight: 700;' : 'color: var(--emerald-800); font-weight: 600;';
-                                return '<div onclick="openProfessorModal(' + m.prof.id + ')" class="cell-box" style="' + boxStyle + '">' +
-                                    '<div class="cell-box-title" style="font-size: 12px;">' + m.subject + '</div>' +
-                                    '<div class="cell-box-sub" style="' + subColor + '">' + m.prof.name + '</div>' +
-                                '</div>';
-                            }).join("") +
-                        '</td>';
+                        html += `<td style="vertical-align: top;">${matches.map(m => `<div onclick="openProfessorModal(${m.prof.id})" class="cell-box ${m.isElective ? 'elective-badge' : ''}" style="cursor: pointer; margin-bottom: 4px;"><div class="cell-box-title" style="font-size: 12px;">${m.subject}</div><div class="cell-box-sub">${m.prof.name}</div></div>`).join("")}</td>`;
                     } else {
-                        html += '<td style="color: var(--slate-300);">—</td>';
+                        html += `<td style="color: var(--slate-300);">—</td>`;
                     }
                 }
-                html += '</tr>';
+                html += `</tr>`;
             }
-
-            html += '<tr style="background: var(--amber-50);">' +
-                '<td class="sticky-col" style="background: var(--amber-50);">' +
-                    '<div style="font-weight: 700; color: var(--amber-900);">Popodne (7-12)</div>' +
-                    '<div style="font-size: 10px; color: var(--amber-700);">TIZO / Odj. zaj.</div>' +
-                '</td>';
-
-            for (let d = 0; d < DAYS.length; d++) {
-                const day = DAYS[d];
-                const items = [];
-                if (day === "SRIJEDA") {
-                    items.push('<div style="background: var(--amber-100); color: var(--amber-950); border: 1px solid var(--amber-200); border-radius: 8px; padding: 5px 7px; font-size: 11px; text-align: left; margin-bottom: 4px;"><strong>7. čas:</strong> Odj. zajednica</div>');
-                }
-                for (let p = 7; p <= 12; p++) {
-                    if (AFTERNOON_TIZO.male[day] && AFTERNOON_TIZO.male[day][p] === cls) {
-                        items.push('<div onclick="openProfessorModal(38)" style="cursor: pointer; background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe; border-radius: 8px; padding: 5px 7px; font-size: 11px; text-align: left; margin-bottom: 4px;"><strong>' + p + '. čas:</strong> TIZO (M) - Huseinbašić T.</div>');
-                    }
-                    if (AFTERNOON_TIZO.female[day] && AFTERNOON_TIZO.female[day][p] === cls) {
-                        items.push('<div onclick="openProfessorModal(39)" style="cursor: pointer; background: #fff1f2; color: #881337; border: 1px solid #fecdd3; border-radius: 8px; padding: 5px 7px; font-size: 11px; text-align: left; margin-bottom: 4px;"><strong>' + p + '. čas:</strong> TIZO (Ž) - Haskić S.</div>');
-                    }
-                }
-                html += '<td style="vertical-align: top;">' + (items.length ? items.join("") : '<span style="color: var(--slate-300);">—</span>') + '</td>';
-            }
-
-            html += '</tr></tbody></table></div>';
+            html += `</tbody></table></div>`;
             container.innerHTML = html;
         }
 
-        // =========================================================================
-        // 4. MODAL LOGIC
-        // =========================================================================
         function openProfessorModal(profId) {
             state.selectedProfessorId = profId;
-            const prof = PROFESSORS.find(function(p) { return p.id === profId; });
+            const prof = PROFESSORS.find(p => p.id === profId);
             if (!prof) return;
-
             const ctx = getCurrentContext();
             const parts = prof.name.split(" ");
-            const initials = (parts[0] ? parts[0][0] : "") + (parts[1] ? parts[1][0] : "");
+            const initials = (parts[0]?.[0] || "") + (parts[1]?.[0] || "");
 
             document.getElementById("modalAvatar").textContent = initials;
             document.getElementById("modalNumber").textContent = "#" + prof.id;
             document.getElementById("modalProfName").textContent = prof.name;
-            document.getElementById("modalSubjects").textContent = prof.subjects.map(function(s) {
-                return s.name + " (" + s.fond + " časova)";
-            }).join(" • ");
+            document.getElementById("modalSubjects").textContent = prof.subjects.map(s => `${s.name} (${s.fond}h)`).join(" • ");
 
             const razBadge = document.getElementById("modalRazrednik");
-            if (prof.razrednik) {
-                razBadge.textContent = "Razrednik: " + prof.razrednik;
-                razBadge.classList.remove("hidden");
-            } else {
-                razBadge.classList.add("hidden");
-            }
-
-            const banner = document.getElementById("modalLiveBanner");
-            const labelEl = document.getElementById("modalStatusLabel");
-            const headlineEl = document.getElementById("modalStatusHeadline");
-            const subtextEl = document.getElementById("modalStatusSubtext");
-            const nextBox = document.getElementById("modalNextClassBox");
+            if (prof.razrednik) { razBadge.textContent = "Razrednik: " + prof.razrednik; razBadge.classList.remove("hidden"); } else { razBadge.classList.add("hidden"); }
 
             const activity = ctx.statusType === "IN_PERIOD" ? getProfessorActivity(prof, ctx.day, ctx.period) : null;
             const nextAct = ctx.isSchoolDay ? getNextActivity(prof, ctx.day, ctx.period) : null;
-
-            labelEl.textContent = "TRENUTNO STANJE (" + ctx.day + " • " + ctx.periodLabel + ")";
+            const banner = document.getElementById("modalLiveBanner");
 
             if (activity) {
                 banner.className = "status-banner active";
-                headlineEl.textContent = "Trenutno je na času: " + activity.displayClass;
-                subtextEl.textContent = "Predmet: " + activity.subject + " (" + (PERIOD_TIMES[activity.period] ? PERIOD_TIMES[activity.period].label : activity.period + ". čas") + ")";
-            } else if (ctx.statusType === "BREAK") {
-                banner.className = "status-banner break";
-                headlineEl.textContent = "Trenutno je odmor";
-                subtextEl.textContent = "Nastava je na pauzi između časova.";
-            } else if (ctx.statusType === "IN_PERIOD") {
-                banner.className = "status-banner";
-                headlineEl.textContent = "Trenutno nema čas (Slobodan/Slobodna)";
-                subtextEl.textContent = "Nema zakazane nastave za " + (PERIOD_TIMES[ctx.period] ? PERIOD_TIMES[ctx.period].label : ctx.period + ". čas") + ".";
+                document.getElementById("modalStatusHeadline").textContent = "Trenutno je na času: " + activity.displayClass;
+                document.getElementById("modalStatusSubtext").textContent = "Predmet: " + activity.subject;
             } else {
                 banner.className = "status-banner";
-                headlineEl.textContent = "Van termina redovne nastave";
-                subtextEl.textContent = "Pogledaj kompletan sedmični raspored ispod.";
+                document.getElementById("modalStatusHeadline").textContent = "Slobodan / Slobodna ovaj čas";
+                document.getElementById("modalStatusSubtext").textContent = "Nema zakazane nastave u ovom trenutku.";
             }
 
+            const nextBox = document.getElementById("modalNextClassBox");
             if (nextAct) {
                 const nSlot = PERIOD_TIMES[nextAct.period];
-                nextBox.innerHTML =
-                    '<div style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--slate-500);">Sljedeći čas danas</div>' +
-                    '<div style="font-weight: 800; color: var(--slate-900); margin-top: 2px;">' + nSlot.label + ' (' + nSlot.start + ') → <span style="color: var(--emerald-700);">' + nextAct.displayClass + '</span></div>' +
-                    '<div style="font-size: 11px; color: var(--slate-600);">' + nextAct.subject + '</div>';
+                nextBox.innerHTML = `<div style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--slate-500);">Sljedeći čas danas</div><div style="font-weight: 800; margin-top: 2px;">${nSlot.label} (${nSlot.start}) → <span style="color: var(--emerald-700);">${nextAct.displayClass}</span></div>`;
                 nextBox.classList.remove("hidden");
-            } else if (ctx.isSchoolDay) {
-                nextBox.innerHTML =
-                    '<div style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--slate-500);">Do kraja dana</div>' +
-                    '<div style="font-weight: 700; color: var(--slate-700); margin-top: 2px;">Nema više časova danas</div>';
-                nextBox.classList.remove("hidden");
-            } else {
-                nextBox.classList.add("hidden");
-            }
+            } else { nextBox.classList.add("hidden"); }
 
             for (let d = 0; d < DAYS.length; d++) {
-                const th = document.getElementById("th-" + DAYS[d]);
-                th.className = DAYS[d] === ctx.day ? "today-col" : "";
+                document.getElementById("th-" + DAYS[d]).className = DAYS[d] === ctx.day ? "today-col" : "";
             }
 
-            const tbody = document.getElementById("modalScheduleBody");
             let rowsHtml = "";
-            const isTizoOnly = prof.isTizoMale || prof.isTizoFemale;
-            const startPeriod = isTizoOnly ? 7 : 1;
-            const endPeriod = isTizoOnly ? 12 : 6;
-
-            for (let p = startPeriod; p <= endPeriod; p++) {
+            for (let p = 1; p <= 6; p++) {
                 const slot = PERIOD_TIMES[p];
                 const isCurrentRow = ctx.statusType === "IN_PERIOD" && parseInt(ctx.period, 10) === p;
-
-                rowsHtml += '<tr>' +
-                    '<td class="sticky-col">' +
-                        '<div style="font-weight: 700; color: var(--slate-900);">' + slot.label + (isCurrentRow ? ' ●' : '') + '</div>' +
-                        '<div style="font-size: 11px; color: var(--slate-400);">' + slot.start + ' - ' + slot.end + '</div>' +
-                    '</td>';
-
+                rowsHtml += `<tr><td class="sticky-col"><div style="font-weight: 700;">${slot.label}</div><div style="font-size: 11px; color: var(--slate-400);">${slot.start} - ${slot.end}</div></td>`;
                 for (let d = 0; d < DAYS.length; d++) {
                     const day = DAYS[d];
-                    const isCurrentCell = isCurrentRow && day === ctx.day;
                     const act = getProfessorActivity(prof, day, p);
-
                     if (act) {
-                        const boxClass = isCurrentCell ? "cell-box current" : (act.isElective ? "cell-box elective-badge" : "cell-box");
-                        const subLabel = (prof.rows.length > 1 || act.isElective) ? '<div class="cell-box-sub">' + (act.isElective ? 'Izborna' : act.subject) + '</div>' : '';
-                        rowsHtml += '<td><div class="' + boxClass + '"><div class="cell-box-title">' + act.className + '</div>' + subLabel + '</div></td>';
+                        const isCurr = isCurrentRow && day === ctx.day;
+                        rowsHtml += `<td><div class="cell-box ${isCurr ? 'current' : ''} ${act.isElective ? 'elective-badge' : ''}"><div class="cell-box-title">${act.className}</div><div class="cell-box-sub">${act.subject}</div></div></td>`;
                     } else {
-                        rowsHtml += '<td style="color: var(--slate-300);">—</td>';
+                        rowsHtml += `<td style="color: var(--slate-300);">—</td>`;
                     }
                 }
-                rowsHtml += '</tr>';
+                rowsHtml += `</tr>`;
             }
-
-            tbody.innerHTML = rowsHtml;
-
-            const notesBox = document.getElementById("modalExtraNotes");
-            const notesText = document.getElementById("modalExtraNotesText");
-            const notes = [];
-            if (prof.razrednik) {
-                notes.push("Razrednik odjeljenja <strong>" + prof.razrednik + "</strong> (Čas odjeljenske zajednice održava se srijedom, 7. čas).");
-            }
-            if (isTizoOnly) {
-                notes.push("Nastava iz Tjelesnog i zdravstvenog odgoja izvodi se u <strong>popodnevnim terminima (7. – 12. čas)</strong>.");
-            }
-            if (notes.length > 0) {
-                notesText.innerHTML = notes.join(" ");
-                notesBox.classList.remove("hidden");
-            } else {
-                notesBox.classList.add("hidden");
-            }
-
+            document.getElementById("modalScheduleBody").innerHTML = rowsHtml;
             document.getElementById("professorModal").classList.remove("hidden");
         }
 
-        function closeModal() {
-            state.selectedProfessorId = null;
-            document.getElementById("professorModal").classList.add("hidden");
-        }
+        function closeModal() { document.getElementById("professorModal").classList.add("hidden"); }
 
-        // =========================================================================
-        // 5. NAVIGATION & EVENT LISTENERS
-        // =========================================================================
         function switchTab(tabName) {
             state.activeTab = tabName;
-
-            const tabs = {
-                professors: document.getElementById("tabProfessors"),
-                live: document.getElementById("tabLive"),
-                classes: document.getElementById("tabClasses")
-            };
-            const views = {
-                professors: document.getElementById("viewProfessors"),
-                live: document.getElementById("viewLive"),
-                classes: document.getElementById("viewClasses")
-            };
-
-            Object.keys(tabs).forEach(function(k) {
-                if (k === tabName) {
-                    tabs[k].classList.add("active");
-                    views[k].classList.remove("hidden");
-                } else {
-                    tabs[k].classList.remove("active");
-                    views[k].classList.add("hidden");
-                }
+            ["professors", "live", "classes"].forEach(k => {
+                document.getElementById("tab" + k.charAt(0).toUpperCase() + k.slice(1)).classList.toggle("active", k === tabName);
+                document.getElementById("view" + k.charAt(0).toUpperCase() + k.slice(1)).classList.toggle("hidden", k !== tabName);
             });
-
             document.getElementById("searchContainer").style.display = tabName === "professors" ? "block" : "none";
             refreshAllViews();
         }
@@ -2368,66 +683,24 @@
             updateHeaderAndLiveCounts();
             renderProfessorsGrid();
             renderLiveOverview();
-            if (state.activeTab === "classes") {
-                renderClassTimetable();
-            }
-            if (state.selectedProfessorId !== null) {
-                openProfessorModal(state.selectedProfessorId);
-            }
+            if (state.activeTab === "classes") renderClassTimetable();
         }
 
-        function initApp() {
+        document.addEventListener("DOMContentLoaded", () => {
             const classSelect = document.getElementById("classSelector");
-            classSelect.innerHTML = ALL_CLASSES.map(function(c) {
-                return '<option value="' + c + '">Odjeljenje ' + c + '</option>';
-            }).join("");
-            classSelect.addEventListener("change", function(e) {
-                state.selectedClass = e.target.value;
-                renderClassTimetable();
-            });
-
-            document.getElementById("searchInput").addEventListener("input", function(e) {
-                state.searchQuery = e.target.value;
-                renderProfessorsGrid();
-            });
+            classSelect.innerHTML = ALL_CLASSES.map(c => `<option value="${c}">Odjeljenje ${c}</option>`).join("");
+            classSelect.addEventListener("change", e => { state.selectedClass = e.target.value; renderClassTimetable(); });
+            document.getElementById("searchInput").addEventListener("input", e => { state.searchQuery = e.target.value; renderProfessorsGrid(); });
 
             const simDayEl = document.getElementById("simDay");
             const simPeriodEl = document.getElementById("simPeriod");
-            const resetBtn = document.getElementById("resetLiveBtn");
-
-            simDayEl.addEventListener("change", function(e) {
-                state.simDay = e.target.value;
-                simPeriodEl.disabled = state.simDay === "AUTO";
-                refreshAllViews();
-            });
-
-            simPeriodEl.addEventListener("change", function(e) {
-                state.simPeriod = e.target.value;
-                refreshAllViews();
-            });
-
-            resetBtn.addEventListener("click", function() {
-                state.simDay = "AUTO";
-                simDayEl.value = "AUTO";
-                simPeriodEl.disabled = true;
-                refreshAllViews();
-            });
-
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && state.selectedProfessorId !== null) {
-                    closeModal();
-                }
-            });
+            simDayEl.addEventListener("change", e => { state.simDay = e.target.value; simPeriodEl.disabled = state.simDay === "AUTO"; refreshAllViews(); });
+            simPeriodEl.addEventListener("change", e => { state.simPeriod = e.target.value; refreshAllViews(); });
+            document.getElementById("resetLiveBtn").addEventListener("click", () => { state.simDay = "AUTO"; simDayEl.value = "AUTO"; simPeriodEl.disabled = true; refreshAllViews(); });
 
             refreshAllViews();
             setInterval(updateHeaderAndLiveCounts, 1000);
-        }
-
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", initApp);
-        } else {
-            initApp();
-        }
+        });
     </script>
 </body>
 </html>
